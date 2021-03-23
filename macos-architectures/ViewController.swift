@@ -29,6 +29,7 @@ class ViewController: NSViewController {
         didSet {
             setWindowTitle()
             tableView.reloadData()
+            UserDefaults.standard.set(todoItems, forKey: "CompletedItems")
         }
     }
     
@@ -114,7 +115,10 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 40
+        switch getSection(row) {
+        case .todo: return 40
+        case .completed: return 35
+        }
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
