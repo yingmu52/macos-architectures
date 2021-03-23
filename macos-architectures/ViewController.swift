@@ -7,6 +7,11 @@
 
 import Cocoa
 
+enum TableSection {
+    case todo
+    case completed
+}
+
 class ViewController: NSViewController {
     
     @IBOutlet weak private var tableView: NSTableView!
@@ -28,7 +33,7 @@ class ViewController: NSViewController {
     }
     
     func setWindowTitle() {
-        view.window?.title = "\(todoItems.count) todo items \(completedItems.count) completed"
+        view.window?.title = "\(todoItems.count) Todos \(completedItems.count) completed"
     }
     
     override func viewDidLoad() {
@@ -64,11 +69,38 @@ class ViewController: NSViewController {
         if let items = UserDefaults.standard.value(forKey: "TodoItems") as? [String] {
             todoItems = items
         }
+        if let items = UserDefaults.standard.value(forKey: "CompletedItems") as? [String] {
+            completedItems = items
+        }
     }
     
     @objc func doubleClick() {
-        let removedItem = todoItems.remove(at: tableView.clickedRow)
-        completedItems.append(removedItem)
+        removeItem(tableView.clickedRow)
+    }
+}
+
+extension ViewController {
+    func getSection(_ row: Int) -> TableSection {
+        return 0 ..< todoItems.count ~= row ? .todo : .completed
+    }
+    
+    func getItem(_ row: Int) -> String {
+        switch getSection(row) {
+        case .todo:
+            return todoItems[row]
+        case .completed:
+            return completedItems[row - todoItems.count]
+        }
+    }
+    
+    func removeItem(_ row: Int) {
+        switch getSection(row) {
+        case .todo:
+            let removedItem = todoItems.remove(at: row)
+            completedItems.insert(removedItem, at: 0)
+        case .completed:
+            completedItems.remove(at: row - todoItems.count)
+        }
     }
 }
 
@@ -78,7 +110,7 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return todoItems.count
+        return todoItems.count + completedItems.count
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -90,11 +122,17 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
                 as? NSTableCellView else { return nil }
         // set cell style
         cell.wantsLayer = true
-        cell.layer?.backgroundColor = NSColor.systemIndigo.cgColor
         cell.layer?.cornerRadius = 5
         cell.textField?.textColor = .white
         
-        cell.textField?.stringValue = todoItems[row]
+        switch getSection(row) {
+        case .todo:
+            cell.layer?.backgroundColor = NSColor.systemIndigo.cgColor
+        case .completed:
+            cell.layer?.backgroundColor = NSColor.lightGray.cgColor
+        }
+        
+        cell.textField?.stringValue = getItem(row)
         return cell
     }
 }
