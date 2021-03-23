@@ -12,13 +12,9 @@ class ViewController: NSViewController {
     @IBOutlet weak private var tableView: NSTableView!
     @IBOutlet weak private var inputTextField: NSTextField!
     
-    private lazy var model: TodoModel = {
+    internal lazy var model: TodoModel = {
         TodoModel()
     }()
-    
-    func setWindowTitle() {
-        view.window?.title = model.status
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +36,6 @@ class ViewController: NSViewController {
         tableView.dataSource = self
         tableView.delegate = self
         inputTextField.delegate = self
-        
-        model = TodoModel()
     }
     
     override func viewWillAppear() {
@@ -50,7 +44,25 @@ class ViewController: NSViewController {
     }
     
     @objc func doubleClick() {
-        model.removeItem(at: tableView.clickedRow)
+        removeItem(at: tableView.clickedRow)
+    }
+}
+
+extension ViewController {
+    func setWindowTitle() {
+        view.window?.title = model.status
+    }
+    
+    func addTodo(item: String) {
+        guard !item.isEmpty else { return }
+        model.addTodo(item: inputTextField.stringValue)
+        tableView.reloadData()
+        setWindowTitle()
+        inputTextField.stringValue.removeAll()
+    }
+    
+    func removeItem(at index: Int) {
+        model.removeItem(at: index)
         tableView.reloadData()
         setWindowTitle()
     }
@@ -62,7 +74,7 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int { model.count }
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        model.getSection(with: row) == .todo ? 40 : 35
+        model.section(of: row) == .todo ? 40 : 35
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -72,9 +84,21 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
         cell.wantsLayer = true
         cell.layer?.cornerRadius = 5
         cell.textField?.textColor = .white
-        cell.layer?.backgroundColor = model.getSection(with: row) == .todo ? NSColor.systemIndigo.cgColor : NSColor.lightGray.cgColor
-
-        cell.textField?.stringValue = model[row]
+        
+        switch model.section(of: row) {
+        case .todo:
+            cell.layer?.backgroundColor = NSColor.systemIndigo.cgColor
+            cell.textField?.attributedStringValue = NSAttributedString(string: model[row], attributes: [
+                .foregroundColor: NSColor.white,
+            ])
+        case .completed:
+            cell.layer?.backgroundColor = NSColor.lightGray.cgColor
+            cell.textField?.attributedStringValue = NSAttributedString(string: model[row], attributes: [
+                .strikethroughStyle: NSUnderlineStyle.single.rawValue,
+                .strikethroughColor: NSColor.black,
+                .foregroundColor: NSColor.white,
+            ])
+        }
         return cell
     }
 }
@@ -82,13 +106,8 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
 extension ViewController: NSTextFieldDelegate {
     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         // Do something against ENTER key
-        guard commandSelector == #selector(NSResponder.insertNewline), !inputTextField.stringValue.isEmpty else { return false }
-        
-        model.addTodo(item: inputTextField.stringValue)
-        tableView.reloadData()
-        setWindowTitle()
-        inputTextField.stringValue.removeAll()
-        
+        guard commandSelector == #selector(NSResponder.insertNewline) else { return false }
+        addTodo(item: inputTextField.stringValue)
         return true
     }
 }

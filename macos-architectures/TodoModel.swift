@@ -10,7 +10,7 @@ import Foundation
 class TodoModel {
     private var todoItems: [String]
     private var completedItems: [String]
-    
+
     enum Section {
         case todo
         case completed
@@ -21,12 +21,12 @@ class TodoModel {
         completedItems = UserDefaults.standard.value(forKey: "CompletedItems") as? [String] ?? []
     }
     
-    func getSection(with row: Int) -> Section {
-        0 ..< todoItems.count ~= row ? .todo : .completed
+    func section(of index: Int) -> Section {
+        0 ..< todoItems.count ~= index ? .todo : .completed
     }
     
     subscript(index: Int) -> String {
-        switch getSection(with: index) {
+        switch section(of: index) {
         case .todo:
             return todoItems[index]
         case .completed:
@@ -40,7 +40,7 @@ class TodoModel {
     }
     
     func removeItem(at index: Int) {
-        switch getSection(with: index) {
+        switch section(of: index) {
         case .todo:
             let removedItem = todoItems.remove(at: index)
             completedItems.insert(removedItem, at: 0)
