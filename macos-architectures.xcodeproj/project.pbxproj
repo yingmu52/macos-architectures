@@ -13,6 +13,9 @@
 		AE1D29602609276D00654794 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1D295E2609276D00654794 /* Main.storyboard */; };
 		AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D296B2609276D00654794 /* macos_architecturesTests.swift */; };
 		AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D29762609276D00654794 /* macos_architecturesUITests.swift */; };
+		AEEDD39E2609BA8700558CE3 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDD39D2609BA8700558CE3 /* TodoModel.swift */; };
+		AEEDD39F2609BA8700558CE3 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDD39D2609BA8700558CE3 /* TodoModel.swift */; };
+		AEEDD3A02609BA8700558CE3 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDD39D2609BA8700558CE3 /* TodoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,7 @@
 		AE1D29722609276D00654794 /* macos-architecturesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macos-architecturesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D29762609276D00654794 /* macos_architecturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macos_architecturesUITests.swift; sourceTree = "<group>"; };
 		AE1D29782609276D00654794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEEDD39D2609BA8700558CE3 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 				AE1D295E2609276D00654794 /* Main.storyboard */,
 				AE1D29612609276D00654794 /* Info.plist */,
 				AE1D29622609276D00654794 /* macos_architectures.entitlements */,
+				AEEDD39D2609BA8700558CE3 /* TodoModel.swift */,
 			);
 			path = "macos-architectures";
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEEDD39E2609BA8700558CE3 /* TodoModel.swift in Sources */,
 				AE1D295B2609276A00654794 /* ViewController.swift in Sources */,
 				AE1D29592609276A00654794 /* AppDelegate.swift in Sources */,
 			);
@@ -263,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */,
+				AEEDD39F2609BA8700558CE3 /* TodoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */,
+				AEEDD3A02609BA8700558CE3 /* TodoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

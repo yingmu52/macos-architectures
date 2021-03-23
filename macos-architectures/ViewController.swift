@@ -7,34 +7,17 @@
 
 import Cocoa
 
-enum TableSection {
-    case todo
-    case completed
-}
-
 class ViewController: NSViewController {
     
     @IBOutlet weak private var tableView: NSTableView!
     @IBOutlet weak private var inputTextField: NSTextField!
     
-    private(set) var todoItems = [String]() {
-        didSet {
-            setWindowTitle()
-            tableView.reloadData()
-            UserDefaults.standard.set(todoItems, forKey: "TodoItems")
-        }
-    }
-    
-    private(set) var completedItems = [String]() {
-        didSet {
-            setWindowTitle()
-            tableView.reloadData()
-            UserDefaults.standard.set(todoItems, forKey: "CompletedItems")
-        }
-    }
+    private lazy var model: TodoModel = {
+        TodoModel()
+    }()
     
     func setWindowTitle() {
-        view.window?.title = "\(todoItems.count) Todos \(completedItems.count) completed"
+        view.window?.title = model.status
     }
     
     override func viewDidLoad() {
@@ -58,7 +41,7 @@ class ViewController: NSViewController {
         tableView.delegate = self
         inputTextField.delegate = self
         
-        readData()
+        model = TodoModel()
     }
     
     override func viewWillAppear() {
@@ -66,59 +49,20 @@ class ViewController: NSViewController {
         setWindowTitle()
     }
     
-    func readData() {
-        if let items = UserDefaults.standard.value(forKey: "TodoItems") as? [String] {
-            todoItems = items
-        }
-        if let items = UserDefaults.standard.value(forKey: "CompletedItems") as? [String] {
-            completedItems = items
-        }
-    }
-    
     @objc func doubleClick() {
-        removeItem(tableView.clickedRow)
-    }
-}
-
-extension ViewController {
-    func getSection(_ row: Int) -> TableSection {
-        return 0 ..< todoItems.count ~= row ? .todo : .completed
-    }
-    
-    func getItem(_ row: Int) -> String {
-        switch getSection(row) {
-        case .todo:
-            return todoItems[row]
-        case .completed:
-            return completedItems[row - todoItems.count]
-        }
-    }
-    
-    func removeItem(_ row: Int) {
-        switch getSection(row) {
-        case .todo:
-            let removedItem = todoItems.remove(at: row)
-            completedItems.insert(removedItem, at: 0)
-        case .completed:
-            completedItems.remove(at: row - todoItems.count)
-        }
+        model.removeItem(at: tableView.clickedRow)
+        tableView.reloadData()
+        setWindowTitle()
     }
 }
 
 extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
-    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        return false
-    }
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool { false }
     
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return todoItems.count + completedItems.count
-    }
-    
+    func numberOfRows(in tableView: NSTableView) -> Int { model.count }
+
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        switch getSection(row) {
-        case .todo: return 40
-        case .completed: return 35
-        }
+        model.getSection(with: row) == .todo ? 40 : 35
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -128,15 +72,9 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
         cell.wantsLayer = true
         cell.layer?.cornerRadius = 5
         cell.textField?.textColor = .white
-        
-        switch getSection(row) {
-        case .todo:
-            cell.layer?.backgroundColor = NSColor.systemIndigo.cgColor
-        case .completed:
-            cell.layer?.backgroundColor = NSColor.lightGray.cgColor
-        }
-        
-        cell.textField?.stringValue = getItem(row)
+        cell.layer?.backgroundColor = model.getSection(with: row) == .todo ? NSColor.systemIndigo.cgColor : NSColor.lightGray.cgColor
+
+        cell.textField?.stringValue = model[row]
         return cell
     }
 }
@@ -146,8 +84,11 @@ extension ViewController: NSTextFieldDelegate {
         // Do something against ENTER key
         guard commandSelector == #selector(NSResponder.insertNewline), !inputTextField.stringValue.isEmpty else { return false }
         
-        todoItems.append(inputTextField.stringValue)
+        model.addTodo(item: inputTextField.stringValue)
+        tableView.reloadData()
+        setWindowTitle()
         inputTextField.stringValue.removeAll()
+        
         return true
     }
 }
