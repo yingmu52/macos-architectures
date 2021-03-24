@@ -18,13 +18,13 @@ protocol ViewModelOutputs {
     var status: Property<String> { get }
 }
 
-protocol ViewModelType {
+protocol mvvmrs_ViewModelType {
     var inputs: ViewModelInputs { get }
     var outputs: ViewModelOutputs { get }
 }
 
 
-final class mvvmrs_ViewModel: ViewModelType, ViewModelInputs, ViewModelOutputs {
+final class mvvmrs_ViewModel: mvvmrs_ViewModelType, ViewModelInputs, ViewModelOutputs {
     var inputs: ViewModelInputs { self }
     var outputs: ViewModelOutputs { self }
     

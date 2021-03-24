@@ -13,7 +13,7 @@ class mvvmrs_ViewController: NSViewController {
     @IBOutlet weak private var tableView: NSTableView!
     @IBOutlet weak private var inputTextField: NSTextField!
     
-    let viewModel: ViewModelType = mvvmrs_ViewModel()
+    let viewModel: mvvmrs_ViewModelType = mvvmrs_ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
