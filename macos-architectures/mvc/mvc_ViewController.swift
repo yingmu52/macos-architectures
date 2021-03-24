@@ -7,13 +7,13 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class mvc_ViewController: NSViewController {
     
     @IBOutlet weak private var tableView: NSTableView!
     @IBOutlet weak private var inputTextField: NSTextField!
     
-    internal lazy var model: TodoModel = {
-        TodoModel()
+    lazy var model: mvc_Model = {
+        mvc_Model()
     }()
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class ViewController: NSViewController {
     }
 }
 
-extension ViewController {
+extension mvc_ViewController {
     @objc func doubleClick() {
         removeItem(at: tableView.clickedRow)
     }
@@ -56,7 +56,7 @@ extension ViewController {
     }
 }
 
-extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
+extension mvc_ViewController: NSTableViewDelegate, NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool { false }
     
     func numberOfRows(in tableView: NSTableView) -> Int { model.count }
@@ -73,7 +73,7 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
     }
 }
 
-extension ViewController: NSTextFieldDelegate {
+extension mvc_ViewController: NSTextFieldDelegate {
     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         guard commandSelector == #selector(NSResponder.insertNewline) else { return false }
         addTodo(item: inputTextField.stringValue)

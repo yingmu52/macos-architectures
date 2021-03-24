@@ -8,7 +8,7 @@
 import Cocoa
 
 extension NSTableCellView {
-    func setup(content: String, for todoType: TodoModel.Section) {
+    func setup(content: String, for todoType: mvc_Model.Section) {
         // set cell style
         wantsLayer = true
         layer?.cornerRadius = 5

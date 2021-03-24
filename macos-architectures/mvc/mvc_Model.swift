@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TodoModel {
+class mvc_Model {
     private var todoItems: [String]
     private var completedItems: [String]
 
