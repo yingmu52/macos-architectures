@@ -9,7 +9,7 @@ import Cocoa
 
 extension NSTableView {
     
-    func setupTodoView() {
+    func setupTheme() {
         // use signal column
         columnAutoresizingStyle = .uniformColumnAutoresizingStyle
         sizeLastColumnToFit()
@@ -18,7 +18,7 @@ extension NSTableView {
         headerView = nil
         
         // remove table view selection color
-        selectionHighlightStyle = .regular
+        selectionHighlightStyle = .sourceList
         
         // add space between cell
         intercellSpacing = NSSize(width: 5, height: 5)

@@ -18,7 +18,7 @@ class mvc_ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.setupTodoView()
+        tableView.setupTheme()
         
         tableView.doubleAction = #selector(doubleClick)
         tableView.dataSource = self

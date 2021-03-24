@@ -44,7 +44,7 @@ final class mvvmrs_ViewModel: mvvmrs_ViewModelType, ViewModelInputs, ViewModelOu
         
         status = Property
             .combineLatest(_todoItems, _completedItems)
-            .map { "\($0.count) todo \($1.count) completed" }
+            .map { "[MVVM + ReactiveSwift] \($0.count) todo \($1.count) completed" }
         
         _todoItems.signal.observeValues { items in
             UserDefaults.standard.setValue(items, forKey: "TodoItems")

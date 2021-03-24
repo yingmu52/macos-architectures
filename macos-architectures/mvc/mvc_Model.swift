@@ -57,7 +57,7 @@ class mvc_Model {
     }
     
     var status: String {
-        "\(todoItems.count) todo \(completedItems.count) completed"
+        "[MVC] \(todoItems.count) todo \(completedItems.count) completed"
     }
 }
 
