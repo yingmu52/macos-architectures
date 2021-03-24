@@ -7,21 +7,22 @@
 
 import Foundation
 
+enum TodoType {
+    case todo
+    case completed
+}
+
+
 class mvc_Model {
     private var todoItems: [String]
     private var completedItems: [String]
 
-    enum Section {
-        case todo
-        case completed
-    }
-    
     init() {
         todoItems = UserDefaults.standard.value(forKey: "TodoItems") as? [String] ?? []
         completedItems = UserDefaults.standard.value(forKey: "CompletedItems") as? [String] ?? []
     }
     
-    func section(of index: Int) -> Section {
+    func section(of index: Int) -> TodoType {
         0 ..< todoItems.count ~= index ? .todo : .completed
     }
     

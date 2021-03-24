@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		AE1D29602609276D00654794 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1D295E2609276D00654794 /* Main.storyboard */; };
 		AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D296B2609276D00654794 /* macos_architecturesTests.swift */; };
 		AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D29762609276D00654794 /* macos_architecturesUITests.swift */; };
+		AE9940FB260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
+		AE9940FC260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
+		AE9940FD260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
 		AEA017AE260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
 		AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
 		AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
@@ -22,6 +25,16 @@
 		AEA017CF260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA017CE260AD8E200B4F6A2 /* mvc_View.storyboard */; };
 		AEA017D0260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA017CE260AD8E200B4F6A2 /* mvc_View.storyboard */; };
 		AEA017D1260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA017CE260AD8E200B4F6A2 /* mvc_View.storyboard */; };
+		AEA017E0260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017DF260ADAA700B4F6A2 /* mvvmrs_ViewController.swift */; };
+		AEA017E1260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017DF260ADAA700B4F6A2 /* mvvmrs_ViewController.swift */; };
+		AEA017E2260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017DF260ADAA700B4F6A2 /* mvvmrs_ViewController.swift */; };
+		AEA017EA260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA017E9260ADB5100B4F6A2 /* mvvmrs_View.storyboard */; };
+		AEA017EB260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA017E9260ADB5100B4F6A2 /* mvvmrs_View.storyboard */; };
+		AEA017EC260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA017E9260ADB5100B4F6A2 /* mvvmrs_View.storyboard */; };
+		AEA017F1260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017F0260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift */; };
+		AEA017F2260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017F0260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift */; };
+		AEA017F3260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017F0260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift */; };
+		AEA01807260B0AA600B4F6A2 /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEA01806260B0AA600B4F6A2 /* ReactiveSwift */; };
 		AEEDD39E2609BA8700558CE3 /* mvc_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDD39D2609BA8700558CE3 /* mvc_Model.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,9 +69,13 @@
 		AE1D29722609276D00654794 /* macos-architecturesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macos-architecturesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D29762609276D00654794 /* macos_architecturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macos_architecturesUITests.swift; sourceTree = "<group>"; };
 		AE1D29782609276D00654794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvvmrs_Model.swift; sourceTree = "<group>"; };
 		AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableCellView.swift; sourceTree = "<group>"; };
 		AEA017B7260AD70000B4F6A2 /* NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
 		AEA017CE260AD8E200B4F6A2 /* mvc_View.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = mvc_View.storyboard; sourceTree = "<group>"; };
+		AEA017DF260ADAA700B4F6A2 /* mvvmrs_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvvmrs_ViewController.swift; sourceTree = "<group>"; };
+		AEA017E9260ADB5100B4F6A2 /* mvvmrs_View.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = mvvmrs_View.storyboard; sourceTree = "<group>"; };
+		AEA017F0260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvvmrs_ViewModel.swift; sourceTree = "<group>"; };
 		AEEDD39D2609BA8700558CE3 /* mvc_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvc_Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA01807260B0AA600B4F6A2 /* ReactiveSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +130,7 @@
 			children = (
 				AEA017AC260AD6CA00B4F6A2 /* extension */,
 				AEA017C1260AD7DF00B4F6A2 /* mvc */,
+				AEA017D8260AD9BB00B4F6A2 /* mvvm+ReactiveSwift */,
 				AE1D29582609276A00654794 /* AppDelegate.swift */,
 				AE1D295C2609276C00654794 /* Assets.xcassets */,
 				AE1D295E2609276D00654794 /* Main.storyboard */,
@@ -158,6 +177,17 @@
 			path = mvc;
 			sourceTree = "<group>";
 		};
+		AEA017D8260AD9BB00B4F6A2 /* mvvm+ReactiveSwift */ = {
+			isa = PBXGroup;
+			children = (
+				AEA017DF260ADAA700B4F6A2 /* mvvmrs_ViewController.swift */,
+				AEA017E9260ADB5100B4F6A2 /* mvvmrs_View.storyboard */,
+				AEA017F0260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift */,
+				AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */,
+			);
+			path = "mvvm+ReactiveSwift";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,6 +204,9 @@
 			dependencies = (
 			);
 			name = "macos-architectures";
+			packageProductDependencies = (
+				AEA01806260B0AA600B4F6A2 /* ReactiveSwift */,
+			);
 			productName = "macos-architectures";
 			productReference = AE1D29552609276A00654794 /* macos-architectures.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +278,9 @@
 				Base,
 			);
 			mainGroup = AE1D294C2609276A00654794;
+			packageReferences = (
+				AEA01805260B0AA600B4F6A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
+			);
 			productRefGroup = AE1D29562609276A00654794 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +299,7 @@
 			files = (
 				AEA017CF260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */,
 				AE1D295D2609276C00654794 /* Assets.xcassets in Resources */,
+				AEA017EA260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */,
 				AE1D29602609276D00654794 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA017EB260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */,
 				AEA017D0260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA017EC260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */,
 				AEA017D1260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,8 +329,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9940FB260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
 				AEA017AE260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
+				AEA017E0260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */,
 				AEEDD39E2609BA8700558CE3 /* mvc_Model.swift in Sources */,
+				AEA017F1260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
 				AE1D295B2609276A00654794 /* mvc_ViewController.swift in Sources */,
 				AE1D29592609276A00654794 /* AppDelegate.swift in Sources */,
 				AEA017B8260AD70000B4F6A2 /* NSTableView.swift in Sources */,
@@ -304,7 +346,10 @@
 			files = (
 				AEA017B9260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
+				AE9940FC260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
+				AEA017F2260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
 				AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */,
+				AEA017E1260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +359,10 @@
 			files = (
 				AEA017BA260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
+				AE9940FD260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
+				AEA017F3260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
 				AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */,
+				AEA017E2260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +668,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AEA01805260B0AA600B4F6A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AEA01806260B0AA600B4F6A2 /* ReactiveSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEA01805260B0AA600B4F6A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
+			productName = ReactiveSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AE1D294D2609276A00654794 /* Project object */;
 }

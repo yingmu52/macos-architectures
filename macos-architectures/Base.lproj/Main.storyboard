@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="1107" y="175"/>
         </scene>
-        <!--mvc_View-->
+        <!--mvvmrs_View-->
         <scene sceneID="Vl0-Q6-4B9">
             <objects>
-                <controllerPlaceholder storyboardName="mvc_View" id="h4G-Np-pWX" sceneMemberID="viewController"/>
+                <controllerPlaceholder storyboardName="mvvmrs_View" id="h4G-Np-pWX" sceneMemberID="viewController"/>
                 <customObject id="JDm-3n-BXW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1022" y="477"/>
