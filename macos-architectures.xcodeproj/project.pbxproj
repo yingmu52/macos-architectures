@@ -13,6 +13,12 @@
 		AE1D29602609276D00654794 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1D295E2609276D00654794 /* Main.storyboard */; };
 		AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D296B2609276D00654794 /* macos_architecturesTests.swift */; };
 		AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D29762609276D00654794 /* macos_architecturesUITests.swift */; };
+		AEA017AE260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
+		AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
+		AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
+		AEA017B8260AD70000B4F6A2 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017B7260AD70000B4F6A2 /* NSTableView.swift */; };
+		AEA017B9260AD70000B4F6A2 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017B7260AD70000B4F6A2 /* NSTableView.swift */; };
+		AEA017BA260AD70000B4F6A2 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017B7260AD70000B4F6A2 /* NSTableView.swift */; };
 		AEEDD39E2609BA8700558CE3 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDD39D2609BA8700558CE3 /* TodoModel.swift */; };
 		AEEDD39F2609BA8700558CE3 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDD39D2609BA8700558CE3 /* TodoModel.swift */; };
 		AEEDD3A02609BA8700558CE3 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDD39D2609BA8700558CE3 /* TodoModel.swift */; };
@@ -49,6 +55,8 @@
 		AE1D29722609276D00654794 /* macos-architecturesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macos-architecturesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D29762609276D00654794 /* macos_architecturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macos_architecturesUITests.swift; sourceTree = "<group>"; };
 		AE1D29782609276D00654794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableCellView.swift; sourceTree = "<group>"; };
+		AEA017B7260AD70000B4F6A2 /* NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
 		AEEDD39D2609BA8700558CE3 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +108,7 @@
 		AE1D29572609276A00654794 /* macos-architectures */ = {
 			isa = PBXGroup;
 			children = (
+				AEA017AC260AD6CA00B4F6A2 /* extension */,
 				AE1D29582609276A00654794 /* AppDelegate.swift */,
 				AE1D295A2609276A00654794 /* ViewController.swift */,
 				AE1D295C2609276C00654794 /* Assets.xcassets */,
@@ -127,6 +136,15 @@
 				AE1D29782609276D00654794 /* Info.plist */,
 			);
 			path = "macos-architecturesUITests";
+			sourceTree = "<group>";
+		};
+		AEA017AC260AD6CA00B4F6A2 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */,
+				AEA017B7260AD70000B4F6A2 /* NSTableView.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA017AE260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
 				AEEDD39E2609BA8700558CE3 /* TodoModel.swift in Sources */,
 				AE1D295B2609276A00654794 /* ViewController.swift in Sources */,
 				AE1D29592609276A00654794 /* AppDelegate.swift in Sources */,
+				AEA017B8260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA017B9260AD70000B4F6A2 /* NSTableView.swift in Sources */,
+				AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
 				AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */,
 				AEEDD39F2609BA8700558CE3 /* TodoModel.swift in Sources */,
 			);
@@ -277,6 +299,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA017BA260AD70000B4F6A2 /* NSTableView.swift in Sources */,
+				AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
 				AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */,
 				AEEDD3A02609BA8700558CE3 /* TodoModel.swift in Sources */,
 			);

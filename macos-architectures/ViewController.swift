@@ -18,19 +18,7 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // use signal column
-        tableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
-        tableView.sizeLastColumnToFit()
-        
-        // remove header view
-        tableView.headerView = nil
-        
-        // remove table view selection color
-        tableView.selectionHighlightStyle = .regular
-        
-        // add space between cell
-        tableView.intercellSpacing = NSSize(width: 5, height: 5)
+        tableView.setupTodoView()
         
         tableView.doubleAction = #selector(doubleClick)
         tableView.dataSource = self
@@ -42,13 +30,13 @@ class ViewController: NSViewController {
         super.viewWillAppear()
         setWindowTitle()
     }
-    
-    @objc func doubleClick() {
-        removeItem(at: tableView.clickedRow)
-    }
 }
 
 extension ViewController {
+    @objc func doubleClick() {
+        removeItem(at: tableView.clickedRow)
+    }
+    
     func setWindowTitle() {
         view.window?.title = model.status
     }
@@ -78,34 +66,15 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TodoItemCell"), owner: nil)
-                as? NSTableCellView else { return nil }
-        // set cell style
-        cell.wantsLayer = true
-        cell.layer?.cornerRadius = 5
-        cell.textField?.textColor = .white
-        
-        switch model.section(of: row) {
-        case .todo:
-            cell.layer?.backgroundColor = NSColor.systemIndigo.cgColor
-            cell.textField?.attributedStringValue = NSAttributedString(string: model[row], attributes: [
-                .foregroundColor: NSColor.white,
-            ])
-        case .completed:
-            cell.layer?.backgroundColor = NSColor.lightGray.cgColor
-            cell.textField?.attributedStringValue = NSAttributedString(string: model[row], attributes: [
-                .strikethroughStyle: NSUnderlineStyle.single.rawValue,
-                .strikethroughColor: NSColor.black,
-                .foregroundColor: NSColor.white,
-            ])
-        }
+        let id = NSUserInterfaceItemIdentifier(rawValue: "TodoItemCell")
+        guard let cell = tableView.makeView(withIdentifier: id, owner: nil) as? NSTableCellView else { return nil }
+        cell.setup(content: model[row], for: model.section(of: row))
         return cell
     }
 }
 
 extension ViewController: NSTextFieldDelegate {
     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-        // Do something against ENTER key
         guard commandSelector == #selector(NSResponder.insertNewline) else { return false }
         addTodo(item: inputTextField.stringValue)
         return true
