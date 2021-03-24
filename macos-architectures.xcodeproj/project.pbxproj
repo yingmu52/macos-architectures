@@ -16,6 +16,10 @@
 		AE9940FB260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
 		AE9940FC260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
 		AE9940FD260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
+		AE994114260BC89D00E22DFE /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AE994113260BC89D00E22DFE /* RxSwift */; };
+		AE994116260BC89D00E22DFE /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AE994115260BC89D00E22DFE /* RxRelay */; };
+		AE994118260BC89D00E22DFE /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AE994117260BC89D00E22DFE /* RxCocoa */; };
+		AE99411A260BC89D00E22DFE /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = AE994119260BC89D00E22DFE /* RxBlocking */; };
 		AEA017AE260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
 		AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
 		AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
@@ -84,7 +88,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE994116260BC89D00E22DFE /* RxRelay in Frameworks */,
+				AE994114260BC89D00E22DFE /* RxSwift in Frameworks */,
+				AE994118260BC89D00E22DFE /* RxCocoa in Frameworks */,
 				AEA01807260B0AA600B4F6A2 /* ReactiveSwift in Frameworks */,
+				AE99411A260BC89D00E22DFE /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +214,10 @@
 			name = "macos-architectures";
 			packageProductDependencies = (
 				AEA01806260B0AA600B4F6A2 /* ReactiveSwift */,
+				AE994113260BC89D00E22DFE /* RxSwift */,
+				AE994115260BC89D00E22DFE /* RxRelay */,
+				AE994117260BC89D00E22DFE /* RxCocoa */,
+				AE994119260BC89D00E22DFE /* RxBlocking */,
 			);
 			productName = "macos-architectures";
 			productReference = AE1D29552609276A00654794 /* macos-architectures.app */;
@@ -280,6 +292,7 @@
 			mainGroup = AE1D294C2609276A00654794;
 			packageReferences = (
 				AEA01805260B0AA600B4F6A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
+				AE994112260BC89D00E22DFE /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = AE1D29562609276A00654794 /* Products */;
 			projectDirPath = "";
@@ -670,6 +683,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AE994112260BC89D00E22DFE /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
 		AEA01805260B0AA600B4F6A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveSwift";
@@ -681,6 +702,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AE994113260BC89D00E22DFE /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE994112260BC89D00E22DFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		AE994115260BC89D00E22DFE /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE994112260BC89D00E22DFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		AE994117260BC89D00E22DFE /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE994112260BC89D00E22DFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AE994119260BC89D00E22DFE /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE994112260BC89D00E22DFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
 		AEA01806260B0AA600B4F6A2 /* ReactiveSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AEA01805260B0AA600B4F6A2 /* XCRemoteSwiftPackageReference "ReactiveSwift" */;
