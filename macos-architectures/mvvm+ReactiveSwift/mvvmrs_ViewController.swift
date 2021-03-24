@@ -29,18 +29,24 @@ class mvvmrs_ViewController: NSViewController {
             inputTextField?.stringValue.removeAll()
         }
         
-        viewModel.outputs.status.signal.observeValues { [view] title in
-            view.window?.title = title
+        viewModel.outputs.status.signal.observeValues { [weak self] title in
+            self?.setWindowTitle()
         }
     }
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        view.window?.title = viewModel.outputs.status.value
+        setWindowTitle()
     }
     
     @objc func doubleClick() {
         viewModel.inputs.clicked(at: tableView.clickedRow)
+    }
+}
+
+extension mvvmrs_ViewController: SplitViewControllerSelectionProtocol {
+    func setWindowTitle() {
+        view.window?.title = viewModel.outputs.status.value
     }
 }
 

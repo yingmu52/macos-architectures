@@ -20,9 +20,13 @@ class SplitViewController: NSSplitViewController {
                 
                 if let vc = storyboard.instantiateInitialController() as? NSViewController {
                     self?.splitViewItems.append(NSSplitViewItem(viewController: vc))
+                    (vc as? SplitViewControllerSelectionProtocol)?.setWindowTitle()
                 }
             }
         }
     }
 }
 
+protocol SplitViewControllerSelectionProtocol {
+    func setWindowTitle()
+}

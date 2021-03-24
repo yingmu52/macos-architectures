@@ -32,15 +32,16 @@ class mvc_ViewController: NSViewController {
     }
 }
 
+extension mvc_ViewController: SplitViewControllerSelectionProtocol {
+    func setWindowTitle() {
+        view.window?.title = model.status
+    }
+}
+
 extension mvc_ViewController {
     @objc func doubleClick() {
         removeItem(at: tableView.clickedRow)
     }
-    
-    func setWindowTitle() {
-        view.window?.title = model.status
-    }
-    
     func addTodo(item: String) {
         guard !item.isEmpty else { return }
         model.addTodo(item: inputTextField.stringValue)
