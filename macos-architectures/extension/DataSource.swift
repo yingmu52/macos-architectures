@@ -54,11 +54,30 @@ class DataSource<Value: TodoModel>: NSObject, NSTableViewDataSource, NSTableView
 
 extension DataSource {
     
-    func prepend(_ value: Value) {
+    var status: String {
+        var todoCount = 0, completedCount = 0
+        for item in values {
+            switch item.type {
+            case .todo:
+                todoCount += 1
+            case .completed:
+                completedCount += 1
+            }
+        }
+        return "\(todoCount) todo \(completedCount) completed"
+    }
+    
+    @discardableResult
+    func remove(at index: Int) -> Value {
+        values.remove(at: index)
+    }
+    
+    func insert(_ value: Value, at index: Int) {
         values.insert(value, at: 0)
     }
     
-    func remove(at index: Int) {
-        values.remove(at: index)
+    func getType(at index: Int) -> TodoType {
+        values[index].type
     }
+    
 }

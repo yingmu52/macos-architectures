@@ -12,18 +12,33 @@ class mvc_ViewController: NSViewController {
     @IBOutlet weak private var tableView: NSTableView!
     @IBOutlet weak private var inputTextField: NSTextField!
     
-    lazy var model: mvc_Model = {
-        mvc_Model()
-    }()
+    let dataSource = DataSource([mvc_Model]())
     
+    private var _todoItems = [String]() {
+        didSet {
+            dataSource.setValues(_todoItems.mapTodoModels() + _completedItems.mapCompletedModels())
+            UserDefaults.standard.setValue(_todoItems, forKey: "TodoItems")
+        }
+    }
+    
+    private var _completedItems = [String]() {
+        didSet {
+            dataSource.setValues(_todoItems.mapTodoModels() + _completedItems.mapCompletedModels())
+            UserDefaults.standard.setValue(_completedItems, forKey: "CompletedItems")
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.setupTheme()
         
         tableView.doubleAction = #selector(doubleClick)
-        tableView.dataSource = self
-        tableView.delegate = self
+        dataSource.bind(to: tableView)
         inputTextField.delegate = self
+        
+        _todoItems = getCachedTodoItems()
+        _completedItems = getCachedCompletedItems()
+        tableView.reloadData()
     }
     
     override func viewWillAppear() {
@@ -34,43 +49,41 @@ class mvc_ViewController: NSViewController {
 
 extension mvc_ViewController: SplitViewControllerSelectionProtocol {
     func setWindowTitle() {
-        view.window?.title = model.status
+        view.window?.title = "[MVC] \(dataSource.status)"
     }
 }
 
 extension mvc_ViewController {
     @objc func doubleClick() {
-        removeItem(at: tableView.clickedRow)
+        let index = tableView.clickedRow
+        switch index {
+        case 0 ..< _todoItems.count:
+            let removed = _todoItems.remove(at: index)
+            _completedItems.insert(removed, at: 0)
+            tableView.beginUpdates()
+            tableView.removeRows(at: [index], withAnimation: .slideDown)
+            tableView.insertRows(at: [_todoItems.count], withAnimation: .slideDown)
+            tableView.endUpdates()
+        case _todoItems.count ..< _todoItems.count + _completedItems.count:
+            _completedItems.remove(at: index - _todoItems.count)
+            tableView.removeRows(at: [index], withAnimation: .slideRight)
+        default:
+            break
+        }
     }
+    
     func addTodo(item: String) {
         guard !item.isEmpty else { return }
-        model.addTodo(item: inputTextField.stringValue)
+        _todoItems.insert(item, at: 0)
         tableView.reloadData()
         setWindowTitle()
         inputTextField.stringValue.removeAll()
     }
     
     func removeItem(at index: Int) {
-        model.removeItem(at: index)
+        dataSource.remove(at: index)
         tableView.reloadData()
         setWindowTitle()
-    }
-}
-
-extension mvc_ViewController: NSTableViewDelegate, NSTableViewDataSource {
-    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool { false }
-    
-    func numberOfRows(in tableView: NSTableView) -> Int { model.count }
-
-    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        model.section(of: row) == .todo ? 40 : 35
-    }
-    
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let id = NSUserInterfaceItemIdentifier(rawValue: "TodoItemCell")
-        guard let cell = tableView.makeView(withIdentifier: id, owner: nil) as? NSTableCellView else { return nil }
-        cell.setup(content: model[row], for: model.section(of: row))
-        return cell
     }
 }
 
