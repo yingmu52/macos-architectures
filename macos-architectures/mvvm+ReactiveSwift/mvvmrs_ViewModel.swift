@@ -14,7 +14,7 @@ protocol ViewModelInputs {
 }
 
 protocol ViewModelOutputs {
-    var items: Property<[Model]> { get }
+    var items: Property<[mvvmrs_Model]> { get }
     var status: Property<String> { get }
 }
 
@@ -33,12 +33,19 @@ final class mvvmrs_ViewModel: mvvmrs_ViewModelType, ViewModelInputs, ViewModelOu
 
     private let _clickedIndex = MutableProperty<Int?>(nil)
 
-    let items: Property<[Model]>
+    let items: Property<[mvvmrs_Model]>
     let status: Property<String>
     
     init() {
         let combineItems  = SignalProducer
-            .combineLatest(_todoItems.producer.map(mapTodoModels), _completedItems.producer.map(mapCompleteModels))
+            .combineLatest(
+                _todoItems.producer.map { items -> [mvvmrs_Model] in
+                    items.mapTodoModels()
+                },
+                _completedItems.producer.map { items -> [mvvmrs_Model] in
+                    items.mapCompletedModels()
+                }
+            )
             .map { $0.0 + $0.1 }
         items = Property(initial: [], then: combineItems)
         
@@ -61,7 +68,7 @@ final class mvvmrs_ViewModel: mvvmrs_ViewModelType, ViewModelInputs, ViewModelOu
 extension mvvmrs_ViewModel {
     func addTodo(item: String) {
         guard !item.isEmpty else { return }
-        _todoItems.value.append(item)
+        _todoItems.value.insert(item, at: 0)
     }
     
     func clicked(at index: Int) {

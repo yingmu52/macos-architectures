@@ -14,7 +14,7 @@ class mvvmrs_ViewController: NSViewController {
     @IBOutlet weak private var inputTextField: NSTextField!
     
     let viewModel: mvvmrs_ViewModelType = mvvmrs_ViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.setupTheme()
@@ -32,11 +32,6 @@ class mvvmrs_ViewController: NSViewController {
         viewModel.outputs.status.signal.observeValues { [weak self] title in
             self?.setWindowTitle()
         }
-    }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        setWindowTitle()
     }
     
     @objc func doubleClick() {

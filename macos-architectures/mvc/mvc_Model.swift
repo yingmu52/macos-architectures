@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum TodoType {
-    case todo
-    case completed
-}
 
 
 class mvc_Model {
@@ -36,7 +32,7 @@ class mvc_Model {
     }
     
     func addTodo(item: String) {
-        todoItems.append(item)
+        todoItems.insert(item, at: 0)
         UserDefaults.standard.setValue(todoItems, forKey: "TodoItems")
     }
     
