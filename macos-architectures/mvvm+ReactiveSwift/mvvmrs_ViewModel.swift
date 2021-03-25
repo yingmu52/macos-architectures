@@ -11,11 +11,12 @@ import Cocoa
 protocol ViewModelInputs {
     func addTodo(item: String)
     func clicked(at index: Int)
+    func queryStatus()
 }
 
 protocol ViewModelOutputs {
-    var items: Property<[mvvmrs_Model]> { get }
-    var status: Property<String> { get }
+    var items: SignalProducer<[mvvmrs_Model], Never> { get }
+    var status: SignalProducer<String, Never> { get }
 }
 
 protocol mvvmrs_ViewModelType {
@@ -28,30 +29,26 @@ final class mvvmrs_ViewModel: mvvmrs_ViewModelType, ViewModelInputs, ViewModelOu
     var inputs: ViewModelInputs { self }
     var outputs: ViewModelOutputs { self }
     
-    private let _todoItems = MutableProperty(UserDefaults.standard.value(forKey: "TodoItems") as? [String] ?? [])
-    private let _completedItems = MutableProperty(UserDefaults.standard.value(forKey: "CompletedItems") as? [String] ?? [])
+    private let _todoItems = MutableProperty(getCachedTodoItems())
+    private let _completedItems = MutableProperty(getCachedCompletedItems())
 
     private let _clickedIndex = MutableProperty<Int?>(nil)
-
-    let items: Property<[mvvmrs_Model]>
-    let status: Property<String>
+    private let _queryStatus = MutableProperty<Void?>(nil)
+    let items: SignalProducer<[mvvmrs_Model], Never>
+    let status: SignalProducer<String, Never>
     
     init() {
-        let combineItems  = SignalProducer
-            .combineLatest(
-                _todoItems.producer.map { items -> [mvvmrs_Model] in
-                    items.mapTodoModels()
-                },
-                _completedItems.producer.map { items -> [mvvmrs_Model] in
-                    items.mapCompletedModels()
-                }
-            )
-            .map { $0.0 + $0.1 }
-        items = Property(initial: [], then: combineItems)
-        
-        status = Property
-            .combineLatest(_todoItems, _completedItems)
-            .map { "[MVVM + ReactiveSwift] \($0.count) todo \($1.count) completed" }
+        items = SignalProducer
+            .combineLatest(_todoItems.producer, _completedItems.producer)
+            .map { (todoItems, completedItems) in
+                todoItems.mapTodoModels() + completedItems.mapCompletedModels()
+            }
+
+        status = SignalProducer
+            .combineLatest(_todoItems.producer, _completedItems.producer, _queryStatus.producer.skipNil())
+            .map { (todoItems, completedItems, _) in
+                "[MVVM + ReactiveSwift] \(todoItems.count) todo \(completedItems.count) completed"
+            }
         
         _todoItems.signal.observeValues { items in
             UserDefaults.standard.setValue(items, forKey: "TodoItems")
@@ -82,4 +79,9 @@ extension mvvmrs_ViewModel {
             break
         }
     }
+    
+    func queryStatus() {
+        _queryStatus.value = ()
+    }
 }
+
