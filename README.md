@@ -2,6 +2,7 @@
 
 # Learning Highlight
 
+- mvvm with ReactiveSwift, RxSwift, SwiftUI
 - quick workaround to enable multi-section for `NSTableView` with `TodoModel`
 
 # Helpful reads
