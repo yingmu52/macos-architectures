@@ -10,9 +10,7 @@ import Cocoa
 
 /*
  although NSTableViewDelegate shouldn't be here, some of the datasource-like methods are in NSTableViewDelegate
- 
  for example `cellForRowAt` is a method in UITableViewDataSource see https://developer.apple.com/documentation/uikit/uitableviewdatasource
- 
  but apparently `viewFor tableColumn:` isn't in NSTableViewDataSource :(
 */
 
@@ -22,6 +20,11 @@ class DataSource<Value: TodoModel>: NSObject, NSTableViewDataSource, NSTableView
 
     init(_ values: [Value]) {
         self.values = values
+    }
+    
+    func bind(to tableView: NSTableView) {
+        tableView.delegate = self // see the above comment :(
+        tableView.dataSource = self
     }
     
     func setValues(_ items: [Value]) {

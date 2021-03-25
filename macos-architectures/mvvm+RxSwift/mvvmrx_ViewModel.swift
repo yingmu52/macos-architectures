@@ -30,9 +30,10 @@ class mvvmrx_ViewModel: mvvmrx_ViewModelType, mvvmrx_ViewModelOutputs {
     var inputs: mvvmrx_ViewModelInputs { self }
     var outputs: mvvmrx_ViewModelOutputs { self }
     
-    private let _todoItems = BehaviorRelay<[String]>(value: getCachedTodoItems())
-    private let _completedItems = BehaviorRelay<[String]>(value: getCachedCompletedItems())
+    private let _todoItems = BehaviorRelay(value: getCachedTodoItems())
+    private let _completedItems = BehaviorRelay(value: getCachedCompletedItems())
     private let _queryStatus = BehaviorRelay(value: ())
+    private let bag = DisposeBag()
     
     let items: Observable<[mvvmrx_Model]>
     let status: Observable<String>
@@ -47,6 +48,16 @@ class mvvmrx_ViewModel: mvvmrx_ViewModelType, mvvmrx_ViewModelOutputs {
             let (todoItems, completedItems, _) = items
             return "[MVVM + RxSwift] \(todoItems.count) todo \(completedItems.count) completed"
         }
+        
+        _todoItems.asObservable().subscribe(onNext: { items in
+            UserDefaults.standard.setValue(items, forKey: "TodoItems")
+        })
+        .disposed(by: bag)
+        
+        _completedItems.asObservable().subscribe(onNext: { items in
+            UserDefaults.standard.setValue(items, forKey: "CompletedItems")
+        })
+        .disposed(by: bag)
     }
 }
 

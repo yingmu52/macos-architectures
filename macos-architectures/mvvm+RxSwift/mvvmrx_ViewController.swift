@@ -20,10 +20,10 @@ class mvvmrx_ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.setupTheme()
         
-        tableView.dataSource = dataSource
-        tableView.delegate = dataSource
+        tableView.setupTheme()
+        dataSource.bind(to: tableView)
+        
         inputTextField.delegate = self
         tableView.doubleAction = #selector(doubleClick)
         
