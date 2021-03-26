@@ -7,40 +7,107 @@
 
 import SwiftUI
 
-struct swiftui_View: View {
-    @State var items: [swiftui_Model] = []
-    @State var newItem = String()
+struct swiftui_Section: View {
+    let type: TodoType
+    @Binding var values: [swiftui_Model]
     
-    func getCachedItems() {
+    func shouldStrikeThrough(for type: TodoType) -> Bool {
+        type == .completed
+    }
+    
+    func height(for type: TodoType) -> CGFloat {
+        type == .todo ? 40 : 35
+    }
+    
+    func color(for type: TodoType) -> Color {
+        type == .todo ? Color(.systemIndigo) : Color(.lightGray)
+    }
+    
+    var body: some View {
+        ForEach(values) { value in
+            HStack {
+                Text(value.content)
+                    .font(.system(size: 13))
+                    .strikethrough(shouldStrikeThrough(for: value.type))
+                    .padding(8)
+                Spacer()
+            }
+            .frame(height: height(for: value.type))
+            .background(color(for: value.type))
+            .foregroundColor(.white)
+            .cornerRadius(5)
+            .onTapGesture(count: 2) {
+                delete(value)
+            }
+        }
+        .background(Color.clear)
+    }
+    
+    func delete(_ value: swiftui_Model) {
+        for i in 0 ..< values.count where values[i].id == value.id {
+            values.remove(at: i)
+        }
+    }
+}
+
+struct swiftui_View: View {
+    @State fileprivate var _todoItems: [swiftui_Model]
+    @State fileprivate var _completedItems: [swiftui_Model]
+    @State var newItem = String() {
+        didSet {
+            print(newItem)
+        }
+    }
+    
+    static func loadViewWithCache() -> swiftui_View {
         let cachedTodoModels: [swiftui_Model] = getCachedTodoItems().mapTodoModels()
         let cachedCompletedModels: [swiftui_Model] = getCachedCompletedItems().mapCompletedModels()
-        items = cachedTodoModels + cachedCompletedModels
+        
+        let view = swiftui_View(_todoItems: cachedTodoModels, _completedItems: cachedCompletedModels)
+        return view
     }
     
     var body: some View {
         return VStack {
             ScrollView {
-                ForEach(items) { item in
+                ForEach(_todoItems) { value in
                     HStack {
-                        if item.type == .todo {
-                            Text(item.content)
-                                .font(.system(size: 13))
-                                .padding(8)
-                        } else {
-                            Text(item.content)
-                                .font(.system(size: 13))
-                                .strikethrough()
-                                .padding(8)
-                        }
+                        Text(value.content)
+                            .font(.system(size: 13))
+                            .padding(8)
                         Spacer()
                     }
-                    .frame(height: item.type == .todo ? 40 : 35)
-                    .background(item.type == .todo ? Color(.systemIndigo) : Color(.lightGray))
+                    .frame(height: 40)
+                    .background(Color(.systemIndigo))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .onTapGesture(count: 2, perform: {
-//                        items = items.filter { $0.id != item.id }
-                    })
+                    .onTapGesture(count: 2) {
+                        if let index = _todoItems.firstIndex(where: { $0.id == value.id }) {
+                            let removed = _todoItems.remove(at: index)
+                            let newCompleted = swiftui_Model(type: .completed, content: removed.content)
+                            _completedItems.insert(newCompleted, at: 0)
+                        }
+                    }
+                }
+                .background(Color.clear)
+                
+                ForEach(_completedItems) { value in
+                    HStack {
+                        Text(value.content)
+                            .font(.system(size: 13))
+                            .strikethrough()
+                            .padding(8)
+                        Spacer()
+                    }
+                    .frame(height: 35)
+                    .background(Color(.lightGray))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .onTapGesture(count: 2) {
+                        if let index = _completedItems.firstIndex(where: { $0.id == value.id }) {
+                            _completedItems.remove(at: index)
+                        }
+                    }
                 }
                 .background(Color.clear)
             }
@@ -58,14 +125,17 @@ struct swiftui_View: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let testData: [swiftui_Model] = [
+        let todoItems: [swiftui_Model] = [
             .init(type: .todo, content: "take a look"),
             .init(type: .todo, content: "brew a cup of coffee"),
-            .init(type: .todo, content: "code 400 lines of code"),
+        ]
+        
+        let completedItems: [swiftui_Model] = [
+            .init(type: .completed, content: "code 400 lines of code"),
             .init(type: .completed, content: "sleep"),
         ]
-        let view = swiftui_View()
-        view.items = testData
+        
+        let view = swiftui_View( _todoItems: todoItems, _completedItems: completedItems)
         return view
     }
 }

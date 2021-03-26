@@ -16,7 +16,7 @@ import Cocoa
 
 class DataSource<Value: TodoModel>: NSObject, NSTableViewDataSource, NSTableViewDelegate {
     
-    private var values: [Value]
+    private(set) var values: [Value]
 
     init(_ values: [Value]) {
         self.values = values

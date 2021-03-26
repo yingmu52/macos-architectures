@@ -19,10 +19,12 @@ class SplitViewController: NSSplitViewController {
                 self?.splitViewItems.removeLast()
                 
                 if pattern.storyboardName == "" {
-                    let vc = NSHostingController(rootView: swiftui_View())
+                    let view = swiftui_View.loadViewWithCache()
+                    let vc = NSHostingController(rootView: view)
                     self?.splitViewItems.append(NSSplitViewItem(viewController: vc))
                     return
                 }
+                
                 let storyboard = NSStoryboard(name: pattern.storyboardName, bundle: nil)
                 
                 if let vc = storyboard.instantiateInitialController() as? NSViewController {
