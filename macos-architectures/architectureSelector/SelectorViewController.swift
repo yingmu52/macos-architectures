@@ -19,7 +19,8 @@ class SelectorViewController: NSViewController {
     var patterns: [Pattern] = [
         .init(name: "MVC", storyboardName: "mvc_View"),
         .init(name: "MVVM + ReactiveSwift", storyboardName: "mvvmrs_View"),
-        .init(name: "MVVM + RxSwift", storyboardName: "mvvmrx_View")
+        .init(name: "MVVM + RxSwift", storyboardName: "mvvmrx_View"),
+        .init(name: "MVVM + SwiftUI", storyboardName: "")
     ]
     
     override func viewDidLoad() {

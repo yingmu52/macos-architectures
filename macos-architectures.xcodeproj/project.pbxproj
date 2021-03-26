@@ -33,6 +33,9 @@
 		AE29C434260C5022002B749E /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29C433260C5022002B749E /* DataSource.swift */; };
 		AE29C435260C5022002B749E /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29C433260C5022002B749E /* DataSource.swift */; };
 		AE29C436260C5022002B749E /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29C433260C5022002B749E /* DataSource.swift */; };
+		AE8E81A6260D031C00B9F9F9 /* swiftui_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E81A5260D031C00B9F9F9 /* swiftui_View.swift */; };
+		AE8E81A7260D031C00B9F9F9 /* swiftui_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E81A5260D031C00B9F9F9 /* swiftui_View.swift */; };
+		AE8E81A8260D031C00B9F9F9 /* swiftui_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E81A5260D031C00B9F9F9 /* swiftui_View.swift */; };
 		AE9940FB260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
 		AE9940FC260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
 		AE9940FD260BC47100E22DFE /* mvvmrs_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */; };
@@ -103,6 +106,7 @@
 		AE29C41C260C11BA002B749E /* mvvmrx_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvvmrx_Model.swift; sourceTree = "<group>"; };
 		AE29C426260C309D002B749E /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 		AE29C433260C5022002B749E /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		AE8E81A5260D031C00B9F9F9 /* swiftui_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_View.swift; sourceTree = "<group>"; };
 		AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvvmrs_Model.swift; sourceTree = "<group>"; };
 		AE99411F260BC9EE00E22DFE /* SelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
 		AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableCellView.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				AEA017C1260AD7DF00B4F6A2 /* mvc */,
 				AE29C404260C0DA1002B749E /* mvvm+RxSwift */,
 				AEA017D8260AD9BB00B4F6A2 /* mvvm+ReactiveSwift */,
+				AE8E81A4260D02D100B9F9F9 /* mvvm+SwiftUI */,
 				AE1D29582609276A00654794 /* AppDelegate.swift */,
 				AE1D295C2609276C00654794 /* Assets.xcassets */,
 				AE1D295E2609276D00654794 /* Main.storyboard */,
@@ -208,6 +213,14 @@
 				AE29C41C260C11BA002B749E /* mvvmrx_Model.swift */,
 			);
 			path = "mvvm+RxSwift";
+			sourceTree = "<group>";
+		};
+		AE8E81A4260D02D100B9F9F9 /* mvvm+SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				AE8E81A5260D031C00B9F9F9 /* swiftui_View.swift */,
+			);
+			path = "mvvm+SwiftUI";
 			sourceTree = "<group>";
 		};
 		AE99411E260BC96000E22DFE /* architectureSelector */ = {
@@ -401,6 +414,7 @@
 			files = (
 				AE9940FB260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
 				AEA017AE260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
+				AE8E81A6260D031C00B9F9F9 /* swiftui_View.swift in Sources */,
 				AE29C41D260C11BA002B749E /* mvvmrx_Model.swift in Sources */,
 				AE29C434260C5022002B749E /* DataSource.swift in Sources */,
 				AE29C40F260C0DE1002B749E /* mvvmrx_ViewModel.swift in Sources */,
@@ -421,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8E81A7260D031C00B9F9F9 /* swiftui_View.swift in Sources */,
 				AE994121260BC9EE00E22DFE /* SelectorViewController.swift in Sources */,
 				AEA017B9260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
@@ -441,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8E81A8260D031C00B9F9F9 /* swiftui_View.swift in Sources */,
 				AE994122260BC9EE00E22DFE /* SelectorViewController.swift in Sources */,
 				AEA017BA260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
