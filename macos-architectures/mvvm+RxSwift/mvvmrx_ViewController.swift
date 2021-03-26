@@ -25,6 +25,8 @@ class mvvmrx_ViewController: NSViewController {
         dataSource.bind(to: tableView)
         
         inputTextField.delegate = self
+        inputTextField.placeholderString = "Add new todo here"
+
         tableView.doubleAction = #selector(doubleClick)
         
         viewModel.outputs.items

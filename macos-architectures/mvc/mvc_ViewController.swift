@@ -35,6 +35,7 @@ class mvc_ViewController: NSViewController {
         tableView.doubleAction = #selector(doubleClick)
         dataSource.bind(to: tableView)
         inputTextField.delegate = self
+        inputTextField.placeholderString = "Add new todo here"
         
         _todoItems = getCachedTodoItems()
         _completedItems = getCachedCompletedItems()

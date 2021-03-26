@@ -23,7 +23,8 @@ class mvvmrs_ViewController: NSViewController {
         tableView.doubleAction = #selector(doubleClick)
         dataSource.bind(to: tableView)
         inputTextField.delegate = self
-        
+        inputTextField.placeholderString = "Add new todo here"
+
         viewModel.outputs.items.producer.startWithValues { [tableView, inputTextField, dataSource] items in
             dataSource.setValues(items)
             tableView?.reloadData()
