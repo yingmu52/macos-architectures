@@ -7,39 +7,40 @@
 
 import SwiftUI
 
-struct swiftui_Model: TodoModel, Identifiable {
-    let id = UUID()
-    let type: TodoType
-    let content: String
-}
-
 struct swiftui_View: View {
-    var items = [swiftui_Model]()
+    @State var items: [swiftui_Model] = []
     @State var newItem = String()
     
-    init() {
-        if items.isEmpty {
-            let cachedTodoModels: [swiftui_Model] = getCachedTodoItems().mapTodoModels()
-            let cachedCompletedModels: [swiftui_Model] = getCachedCompletedItems().mapCompletedModels()
-            items = cachedTodoModels + cachedCompletedModels
-        }
+    func getCachedItems() {
+        let cachedTodoModels: [swiftui_Model] = getCachedTodoItems().mapTodoModels()
+        let cachedCompletedModels: [swiftui_Model] = getCachedCompletedItems().mapCompletedModels()
+        items = cachedTodoModels + cachedCompletedModels
     }
     
     var body: some View {
-        
-        VStack {
+        return VStack {
             ScrollView {
                 ForEach(items) { item in
                     HStack {
-                        Text(item.content)
-                            .font(.system(size: 13))
-                            .padding(8)
+                        if item.type == .todo {
+                            Text(item.content)
+                                .font(.system(size: 13))
+                                .padding(8)
+                        } else {
+                            Text(item.content)
+                                .font(.system(size: 13))
+                                .strikethrough()
+                                .padding(8)
+                        }
                         Spacer()
                     }
-                    .frame(height: 40)
-                    .background(Color(.systemIndigo))
+                    .frame(height: item.type == .todo ? 40 : 35)
+                    .background(item.type == .todo ? Color(.systemIndigo) : Color(.lightGray))
                     .foregroundColor(.white)
                     .cornerRadius(5)
+                    .onTapGesture(count: 2, perform: {
+//                        items = items.filter { $0.id != item.id }
+                    })
                 }
                 .background(Color.clear)
             }
@@ -63,7 +64,7 @@ struct ContentView_Previews: PreviewProvider {
             .init(type: .todo, content: "code 400 lines of code"),
             .init(type: .completed, content: "sleep"),
         ]
-        var view = swiftui_View()
+        let view = swiftui_View()
         view.items = testData
         return view
     }

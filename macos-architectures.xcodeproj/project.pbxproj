@@ -13,6 +13,9 @@
 		AE1D29602609276D00654794 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1D295E2609276D00654794 /* Main.storyboard */; };
 		AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D296B2609276D00654794 /* macos_architecturesTests.swift */; };
 		AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D29762609276D00654794 /* macos_architecturesUITests.swift */; };
+		AE2572FC260DA039000CC099 /* swiftui_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2572FB260DA039000CC099 /* swiftui_Model.swift */; };
+		AE2572FD260DA039000CC099 /* swiftui_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2572FB260DA039000CC099 /* swiftui_Model.swift */; };
+		AE2572FE260DA039000CC099 /* swiftui_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2572FB260DA039000CC099 /* swiftui_Model.swift */; };
 		AE29C3FB260BD48B002B749E /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29C3FA260BD48B002B749E /* SplitViewController.swift */; };
 		AE29C3FC260BD48B002B749E /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29C3FA260BD48B002B749E /* SplitViewController.swift */; };
 		AE29C3FD260BD48B002B749E /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29C3FA260BD48B002B749E /* SplitViewController.swift */; };
@@ -99,6 +102,7 @@
 		AE1D29722609276D00654794 /* macos-architecturesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macos-architecturesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D29762609276D00654794 /* macos_architecturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macos_architecturesUITests.swift; sourceTree = "<group>"; };
 		AE1D29782609276D00654794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE2572FB260DA039000CC099 /* swiftui_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_Model.swift; sourceTree = "<group>"; };
 		AE29C3FA260BD48B002B749E /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		AE29C405260C0DC2002B749E /* mvvmrx_View.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = mvvmrx_View.storyboard; sourceTree = "<group>"; };
 		AE29C40E260C0DE1002B749E /* mvvmrx_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvvmrx_ViewModel.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				AE8E81A5260D031C00B9F9F9 /* swiftui_View.swift */,
+				AE2572FB260DA039000CC099 /* swiftui_Model.swift */,
 			);
 			path = "mvvm+SwiftUI";
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				AEEDD39E2609BA8700558CE3 /* mvc_Model.swift in Sources */,
 				AEA017F1260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
 				AE29C3FB260BD48B002B749E /* SplitViewController.swift in Sources */,
+				AE2572FC260DA039000CC099 /* swiftui_Model.swift in Sources */,
 				AE1D295B2609276A00654794 /* mvc_ViewController.swift in Sources */,
 				AE29C427260C309D002B749E /* TodoModel.swift in Sources */,
 				AE29C416260C0DEB002B749E /* mvvmrx_ViewController.swift in Sources */,
@@ -439,6 +445,7 @@
 				AE994121260BC9EE00E22DFE /* SelectorViewController.swift in Sources */,
 				AEA017B9260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
+				AE2572FD260DA039000CC099 /* swiftui_Model.swift in Sources */,
 				AE29C435260C5022002B749E /* DataSource.swift in Sources */,
 				AE9940FC260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
 				AEA017F2260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
@@ -460,6 +467,7 @@
 				AE994122260BC9EE00E22DFE /* SelectorViewController.swift in Sources */,
 				AEA017BA260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
+				AE2572FE260DA039000CC099 /* swiftui_Model.swift in Sources */,
 				AE29C436260C5022002B749E /* DataSource.swift in Sources */,
 				AE9940FD260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
 				AEA017F3260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
