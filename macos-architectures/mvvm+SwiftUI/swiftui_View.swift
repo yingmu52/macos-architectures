@@ -45,17 +45,12 @@ struct swiftui_Section: View {
 
 struct swiftui_View: View {
     @State fileprivate var _todoItems: [swiftui_Model]
-    @State fileprivate var _completedItems: [swiftui_Model]
-    @State var newItem = String() {
-        didSet {
-            print(newItem)
-        }
-    }
-    
+    @State fileprivate var _completedItems: [swiftui_Model ]
+    @State var newItem = String()
+
     static func loadViewWithCache() -> swiftui_View {
         let cachedTodoModels: [swiftui_Model] = getCachedTodoItems().mapTodoModels()
         let cachedCompletedModels: [swiftui_Model] = getCachedCompletedItems().mapCompletedModels()
-        
         let view = swiftui_View(_todoItems: cachedTodoModels, _completedItems: cachedCompletedModels)
         return view
     }
@@ -110,9 +105,14 @@ struct swiftui_View: View {
             .padding([.top, .leading, .trailing], 16)
             .frame(maxWidth: .infinity)
             
-            TextField("Add new todo here", text: $newItem)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+            TextField("Add new todo here", text: $newItem, onCommit: {
+                if !newItem.isEmpty {
+                    _todoItems.insert(.init(type: .todo, content: newItem), at: 0)
+                    newItem.removeAll()
+                }
+            })
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding()
             
         }
         .frame(minWidth: 500)
