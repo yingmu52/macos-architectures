@@ -50,12 +50,12 @@ class mvvmrx_ViewModel: mvvmrx_ViewModelType, mvvmrx_ViewModelOutputs {
         }
         
         _todoItems.asObservable().subscribe(onNext: { items in
-            UserDefaults.standard.setValue(items, forKey: "TodoItems")
+            saveTodoItems(items)
         })
         .disposed(by: bag)
         
         _completedItems.asObservable().subscribe(onNext: { items in
-            UserDefaults.standard.setValue(items, forKey: "CompletedItems")
+            saveCompletedItems(items)
         })
         .disposed(by: bag)
     }

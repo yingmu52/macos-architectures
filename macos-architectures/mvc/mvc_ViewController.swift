@@ -17,14 +17,14 @@ class mvc_ViewController: NSViewController {
     private var _todoItems = [String]() {
         didSet {
             dataSource.setValues(_todoItems.mapTodoModels() + _completedItems.mapCompletedModels())
-            UserDefaults.standard.setValue(_todoItems, forKey: "TodoItems")
+            saveTodoItems(_todoItems)
         }
     }
     
     private var _completedItems = [String]() {
         didSet {
             dataSource.setValues(_todoItems.mapTodoModels() + _completedItems.mapCompletedModels())
-            UserDefaults.standard.setValue(_completedItems, forKey: "CompletedItems")
+            saveCompletedItems(_completedItems)
         }
     }
 

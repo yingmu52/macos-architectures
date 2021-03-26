@@ -37,16 +37,9 @@ struct swiftui_Section: View {
             .foregroundColor(.white)
             .cornerRadius(5)
             .onTapGesture(count: 2) {
-                delete(value)
             }
         }
         .background(Color.clear)
-    }
-    
-    func delete(_ value: swiftui_Model) {
-        for i in 0 ..< values.count where values[i].id == value.id {
-            values.remove(at: i)
-        }
     }
 }
 
@@ -86,6 +79,8 @@ struct swiftui_View: View {
                             let removed = _todoItems.remove(at: index)
                             let newCompleted = swiftui_Model(type: .completed, content: removed.content)
                             _completedItems.insert(newCompleted, at: 0)
+                            saveTodoModels(_todoItems)
+                            saveCompletedModels(_completedItems)
                         }
                     }
                 }
@@ -106,6 +101,7 @@ struct swiftui_View: View {
                     .onTapGesture(count: 2) {
                         if let index = _completedItems.firstIndex(where: { $0.id == value.id }) {
                             _completedItems.remove(at: index)
+                            saveCompletedModels(_completedItems)
                         }
                     }
                 }

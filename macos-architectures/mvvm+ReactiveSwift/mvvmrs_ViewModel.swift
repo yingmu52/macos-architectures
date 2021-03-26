@@ -51,11 +51,11 @@ final class mvvmrs_ViewModel: mvvmrs_ViewModelType, ViewModelInputs, ViewModelOu
             }
         
         _todoItems.signal.observeValues { items in
-            UserDefaults.standard.setValue(items, forKey: "TodoItems")
+            saveTodoItems(items)
         }
         
         _completedItems.signal.observeValues { items in
-            UserDefaults.standard.setValue(items, forKey: "CompletedItems")
+            saveCompletedItems(items)
         }
     }
 }

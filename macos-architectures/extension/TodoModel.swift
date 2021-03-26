@@ -58,3 +58,19 @@ func getCachedTodoItems() -> [String] {
 func getCachedCompletedItems() -> [String] {
     UserDefaults.standard.value(forKey: "CompletedItems") as? [String] ?? []
 }
+
+func saveTodoItems(_ todoItems: [String]) {
+    UserDefaults.standard.setValue(todoItems, forKey: "TodoItems")
+}
+
+func saveCompletedItems(_ completedItems: [String]) {
+    UserDefaults.standard.setValue(completedItems, forKey: "CompletedItems")
+}
+
+func saveTodoModels(_ models: [TodoModel]) {
+    saveTodoItems(models.map { $0.content })
+}
+
+func saveCompletedModels(_ models: [TodoModel]) {
+    saveCompletedItems(models.map { $0.content })
+}
