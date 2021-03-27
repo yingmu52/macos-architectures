@@ -20,7 +20,7 @@ class SplitViewController: NSSplitViewController {
                 
                 switch pattern {
                 case .mvc, .mvvm_ReactiveSwift, .mvvm_RxSwift:
-                    let storyboard = NSStoryboard(name: pattern.storyboardName!, bundle: nil)
+                    let storyboard = NSStoryboard(name: pattern.storyboardName, bundle: nil)
                     if let vc = storyboard.instantiateInitialController() as? NSViewController {
                         self?.splitViewItems.append(NSSplitViewItem(viewController: vc))
                         
@@ -31,7 +31,7 @@ class SplitViewController: NSSplitViewController {
                         self?.splitViewItems.append(NSSplitViewItem(viewController: vc))
                     }
                 case .viper:
-                    let vc = viper_ViewController.configureVIPER(storyboardName: pattern.storyboardName!)
+                    let vc = viper_ViewController.configureVIPER(storyboardName: pattern.storyboardName)
                     self?.splitViewItems.append(NSSplitViewItem(viewController: vc))
                 case .mvvm_swiftui:
                     var view = swiftui_View.loadViewWithCache()

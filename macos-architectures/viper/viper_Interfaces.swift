@@ -14,16 +14,19 @@ import Cocoa
  I like this directional way because it avoids using weak reference
  */
 
-protocol viper_ViewInterface {
+protocol viper_ViewInterface: SplitViewControllerSelectionProtocol {
     var interactor: viper_InteractorInterface? { get }
     static func configureVIPER(storyboardName: String) -> Self // return Self for better testability
     func reloadTable()
+    func clearTextField()
 }
 
 protocol viper_InteractorInterface {
     var presenter: viper_PresenterInterface { get }
     var dataSource: DataSource<viper_Entity> { get }
     func loadData()
+    func addTodo(item: String)
+    func doubleClick(at index: Int)
 }
 
 protocol viper_PresenterInterface {

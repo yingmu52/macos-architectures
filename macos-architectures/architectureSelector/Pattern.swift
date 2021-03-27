@@ -28,13 +28,13 @@ extension Pattern: CustomStringConvertible {
 }
 
 extension Pattern {
-    var storyboardName: String? {
+    var storyboardName: String {
         switch self {
         case .mvc: return "mvc_View"
         case .viper: return "viper_View"
         case .mvvm_ReactiveSwift: return "mvvmrs_View"
         case .mvvm_RxSwift: return "mvvmrx_View"
-        case .mvvm_swiftui: return nil
+        case .mvvm_swiftui: return ""
         }
     }
 }

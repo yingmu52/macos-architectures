@@ -19,5 +19,7 @@ final class viper_Presenter: viper_PresenterInterface {
     
     func reloadTable() {
         view.reloadTable()
+        view.clearTextField()
+        view.setWindowTitle()
     }
 }

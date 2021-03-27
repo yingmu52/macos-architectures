@@ -18,6 +18,34 @@ final class viper_Interactor: viper_InteractorInterface {
     }
 
     func loadData() {
+        dataSource.setValues(
+            getCachedTodoItems().mapTodoModels() +
+                getCachedCompletedItems().mapCompletedModels()
+        )
+        
+        presenter.reloadTable()
+    }
+    
+    func addTodo(item: String) {
+        if !item.isEmpty {
+            dataSource.insert(.init(type: .todo, content: item), at: 0)
+            presenter.reloadTable()
+        }
+    }
+    
+    func doubleClick(at index: Int) {
+        let item = dataSource.values[index]
+        switch item.type {
+        case .todo:
+            let removed = dataSource.remove(at: index)
+            let todos = dataSource.values.filter { $0.type == .todo }
+            let completes = dataSource.values.filter { $0.type == .completed }
+            let newComplete = viper_Entity(type: .completed, content: removed.content)
+            dataSource.setValues(todos + [newComplete] + completes)
+
+        case .completed:
+            dataSource.remove(at: index)
+        }
         presenter.reloadTable()
     }
 }
