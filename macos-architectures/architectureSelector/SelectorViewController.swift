@@ -10,19 +10,9 @@ import Cocoa
 class SelectorViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
    
-    struct Pattern {
-        let name: String
-        let storyboardName: String
-    }
     var selectPattern: ((Pattern) -> Void)?
+    var patterns = Pattern.allCases
 
-    var patterns: [Pattern] = [
-        .init(name: "MVC", storyboardName: "mvc_View"),
-        .init(name: "MVVM + ReactiveSwift", storyboardName: "mvvmrs_View"),
-        .init(name: "MVVM + RxSwift", storyboardName: "mvvmrx_View"),
-        .init(name: "MVVM + SwiftUI", storyboardName: "")
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.setupTheme()
@@ -50,7 +40,7 @@ extension SelectorViewController: NSTableViewDelegate, NSTableViewDataSource {
         let id = NSUserInterfaceItemIdentifier("SelectorCell")
         guard let cell = tableView.makeView(withIdentifier: id, owner: nil) as? NSTableCellView else { return nil }
         cell.focusRingType = .exterior
-        cell.textField?.stringValue = patterns[row].name
+        cell.textField?.stringValue = "\(patterns[row])"
         cell.textField?.textColor = .black
         return cell
     }

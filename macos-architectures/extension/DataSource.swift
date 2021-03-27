@@ -81,3 +81,15 @@ extension DataSource {
     }
     
 }
+
+extension DataSource {
+    static func createFromCache<T: TodoModel>() -> DataSource<T> {
+        let models =
+            getCachedTodoItems().mapTodoModels() as [T] +
+            getCachedCompletedItems().mapCompletedModels() as [T]
+        
+        let dataSource = DataSource<T>([])
+        dataSource.setValues(models)
+        return dataSource
+    }
+}

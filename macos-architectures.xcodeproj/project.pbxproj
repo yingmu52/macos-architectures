@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE08B155260F0AB400BE1F05 /* viper_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE08B154260F0AB400BE1F05 /* viper_View.storyboard */; };
+		AE08B156260F0AB400BE1F05 /* viper_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE08B154260F0AB400BE1F05 /* viper_View.storyboard */; };
+		AE08B157260F0AB400BE1F05 /* viper_View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE08B154260F0AB400BE1F05 /* viper_View.storyboard */; };
+		AE08B15F260F0AD800BE1F05 /* viper_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B15E260F0AD800BE1F05 /* viper_ViewController.swift */; };
+		AE08B160260F0AD800BE1F05 /* viper_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B15E260F0AD800BE1F05 /* viper_ViewController.swift */; };
+		AE08B161260F0AD800BE1F05 /* viper_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B15E260F0AD800BE1F05 /* viper_ViewController.swift */; };
+		AE08B167260F0AF500BE1F05 /* viper_Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B165260F0AF500BE1F05 /* viper_Entity.swift */; };
+		AE08B168260F0AF500BE1F05 /* viper_Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B165260F0AF500BE1F05 /* viper_Entity.swift */; };
+		AE08B169260F0AF500BE1F05 /* viper_Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B165260F0AF500BE1F05 /* viper_Entity.swift */; };
+		AE08B174260F0B6500BE1F05 /* viper_Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B173260F0B6500BE1F05 /* viper_Interfaces.swift */; };
+		AE08B175260F0B6500BE1F05 /* viper_Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B173260F0B6500BE1F05 /* viper_Interfaces.swift */; };
+		AE08B176260F0B6500BE1F05 /* viper_Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B173260F0B6500BE1F05 /* viper_Interfaces.swift */; };
+		AE08B17B260F0B7800BE1F05 /* viper_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B17A260F0B7800BE1F05 /* viper_Router.swift */; };
+		AE08B17C260F0B7800BE1F05 /* viper_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B17A260F0B7800BE1F05 /* viper_Router.swift */; };
+		AE08B17D260F0B7800BE1F05 /* viper_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B17A260F0B7800BE1F05 /* viper_Router.swift */; };
+		AE08B182260F0B8E00BE1F05 /* viper_Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B181260F0B8E00BE1F05 /* viper_Interactor.swift */; };
+		AE08B183260F0B8E00BE1F05 /* viper_Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B181260F0B8E00BE1F05 /* viper_Interactor.swift */; };
+		AE08B184260F0B8E00BE1F05 /* viper_Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B181260F0B8E00BE1F05 /* viper_Interactor.swift */; };
+		AE08B189260F0B9800BE1F05 /* viper_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B188260F0B9800BE1F05 /* viper_Presenter.swift */; };
+		AE08B18A260F0B9800BE1F05 /* viper_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B188260F0B9800BE1F05 /* viper_Presenter.swift */; };
+		AE08B18B260F0B9800BE1F05 /* viper_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B188260F0B9800BE1F05 /* viper_Presenter.swift */; };
+		AE08B193260F19C300BE1F05 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B192260F19C300BE1F05 /* Pattern.swift */; };
+		AE08B194260F19C300BE1F05 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B192260F19C300BE1F05 /* Pattern.swift */; };
+		AE08B195260F19C300BE1F05 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE08B192260F19C300BE1F05 /* Pattern.swift */; };
 		AE1D29592609276A00654794 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D29582609276A00654794 /* AppDelegate.swift */; };
 		AE1D295B2609276A00654794 /* mvc_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D295A2609276A00654794 /* mvc_ViewController.swift */; };
 		AE1D295D2609276C00654794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1D295C2609276C00654794 /* Assets.xcassets */; };
@@ -92,6 +116,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE08B154260F0AB400BE1F05 /* viper_View.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = viper_View.storyboard; sourceTree = "<group>"; };
+		AE08B15E260F0AD800BE1F05 /* viper_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viper_ViewController.swift; sourceTree = "<group>"; };
+		AE08B165260F0AF500BE1F05 /* viper_Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viper_Entity.swift; sourceTree = "<group>"; };
+		AE08B173260F0B6500BE1F05 /* viper_Interfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viper_Interfaces.swift; sourceTree = "<group>"; };
+		AE08B17A260F0B7800BE1F05 /* viper_Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viper_Router.swift; sourceTree = "<group>"; };
+		AE08B181260F0B8E00BE1F05 /* viper_Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viper_Interactor.swift; sourceTree = "<group>"; };
+		AE08B188260F0B9800BE1F05 /* viper_Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viper_Presenter.swift; sourceTree = "<group>"; };
+		AE08B192260F19C300BE1F05 /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		AE1D29552609276A00654794 /* macos-architectures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macos-architectures.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D29582609276A00654794 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE1D295A2609276A00654794 /* mvc_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvc_ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +188,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE08B153260F0AA100BE1F05 /* viper */ = {
+			isa = PBXGroup;
+			children = (
+				AE08B154260F0AB400BE1F05 /* viper_View.storyboard */,
+				AE08B15E260F0AD800BE1F05 /* viper_ViewController.swift */,
+				AE08B165260F0AF500BE1F05 /* viper_Entity.swift */,
+				AE08B173260F0B6500BE1F05 /* viper_Interfaces.swift */,
+				AE08B17A260F0B7800BE1F05 /* viper_Router.swift */,
+				AE08B181260F0B8E00BE1F05 /* viper_Interactor.swift */,
+				AE08B188260F0B9800BE1F05 /* viper_Presenter.swift */,
+			);
+			path = viper;
+			sourceTree = "<group>";
+		};
 		AE1D294C2609276A00654794 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +228,7 @@
 				AE99411E260BC96000E22DFE /* architectureSelector */,
 				AEA017AC260AD6CA00B4F6A2 /* extension */,
 				AEA017C1260AD7DF00B4F6A2 /* mvc */,
+				AE08B153260F0AA100BE1F05 /* viper */,
 				AE29C404260C0DA1002B749E /* mvvm+RxSwift */,
 				AEA017D8260AD9BB00B4F6A2 /* mvvm+ReactiveSwift */,
 				AE8E81A4260D02D100B9F9F9 /* mvvm+SwiftUI */,
@@ -238,6 +285,7 @@
 			children = (
 				AE99411F260BC9EE00E22DFE /* SelectorViewController.swift */,
 				AE29C3FA260BD48B002B749E /* SplitViewController.swift */,
+				AE08B192260F19C300BE1F05 /* Pattern.swift */,
 			);
 			path = architectureSelector;
 			sourceTree = "<group>";
@@ -390,6 +438,7 @@
 			files = (
 				AEA017CF260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */,
 				AE1D295D2609276C00654794 /* Assets.xcassets in Resources */,
+				AE08B155260F0AB400BE1F05 /* viper_View.storyboard in Resources */,
 				AE29C406260C0DC2002B749E /* mvvmrx_View.storyboard in Resources */,
 				AEA017EA260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */,
 				AE1D29602609276D00654794 /* Main.storyboard in Resources */,
@@ -402,6 +451,7 @@
 			files = (
 				AEA017EB260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */,
 				AEA017D0260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */,
+				AE08B156260F0AB400BE1F05 /* viper_View.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +459,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE08B157260F0AB400BE1F05 /* viper_View.storyboard in Resources */,
 				AE29C407260C0DC2002B749E /* mvvmrx_View.storyboard in Resources */,
 				AEA017EC260ADB5100B4F6A2 /* mvvmrs_View.storyboard in Resources */,
 				AEA017D1260AD8E200B4F6A2 /* mvc_View.storyboard in Resources */,
@@ -427,17 +478,24 @@
 				AE8E81A6260D031C00B9F9F9 /* swiftui_View.swift in Sources */,
 				AE29C41D260C11BA002B749E /* mvvmrx_Model.swift in Sources */,
 				AE29C434260C5022002B749E /* DataSource.swift in Sources */,
+				AE08B17B260F0B7800BE1F05 /* viper_Router.swift in Sources */,
+				AE08B193260F19C300BE1F05 /* Pattern.swift in Sources */,
+				AE08B15F260F0AD800BE1F05 /* viper_ViewController.swift in Sources */,
+				AE08B167260F0AF500BE1F05 /* viper_Entity.swift in Sources */,
+				AE08B182260F0B8E00BE1F05 /* viper_Interactor.swift in Sources */,
 				AE29C40F260C0DE1002B749E /* mvvmrx_ViewModel.swift in Sources */,
 				AEA017E0260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */,
 				AEEDD39E2609BA8700558CE3 /* mvc_Model.swift in Sources */,
 				AEA017F1260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
 				AE29C3FB260BD48B002B749E /* SplitViewController.swift in Sources */,
+				AE08B174260F0B6500BE1F05 /* viper_Interfaces.swift in Sources */,
 				AE2572FC260DA039000CC099 /* swiftui_Model.swift in Sources */,
 				AE1D295B2609276A00654794 /* mvc_ViewController.swift in Sources */,
 				AE9F08C5260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */,
 				AE29C427260C309D002B749E /* TodoModel.swift in Sources */,
 				AE29C416260C0DEB002B749E /* mvvmrx_ViewController.swift in Sources */,
 				AE1D29592609276A00654794 /* AppDelegate.swift in Sources */,
+				AE08B189260F0B9800BE1F05 /* viper_Presenter.swift in Sources */,
 				AEA017B8260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AE994120260BC9EE00E22DFE /* SelectorViewController.swift in Sources */,
 			);
@@ -448,6 +506,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8E81A7260D031C00B9F9F9 /* swiftui_View.swift in Sources */,
+				AE08B160260F0AD800BE1F05 /* viper_ViewController.swift in Sources */,
+				AE08B183260F0B8E00BE1F05 /* viper_Interactor.swift in Sources */,
 				AE994121260BC9EE00E22DFE /* SelectorViewController.swift in Sources */,
 				AEA017B9260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
@@ -456,13 +516,18 @@
 				AE9940FC260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
 				AEA017F2260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
 				AE9F08C6260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */,
+				AE08B175260F0B6500BE1F05 /* viper_Interfaces.swift in Sources */,
 				AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */,
 				AE29C41E260C11BA002B749E /* mvvmrx_Model.swift in Sources */,
 				AE29C417260C0DEB002B749E /* mvvmrx_ViewController.swift in Sources */,
 				AEA017E1260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */,
 				AE29C428260C309D002B749E /* TodoModel.swift in Sources */,
+				AE08B194260F19C300BE1F05 /* Pattern.swift in Sources */,
 				AE29C410260C0DE1002B749E /* mvvmrx_ViewModel.swift in Sources */,
+				AE08B168260F0AF500BE1F05 /* viper_Entity.swift in Sources */,
 				AE29C3FC260BD48B002B749E /* SplitViewController.swift in Sources */,
+				AE08B17C260F0B7800BE1F05 /* viper_Router.swift in Sources */,
+				AE08B18A260F0B9800BE1F05 /* viper_Presenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +536,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8E81A8260D031C00B9F9F9 /* swiftui_View.swift in Sources */,
+				AE08B161260F0AD800BE1F05 /* viper_ViewController.swift in Sources */,
+				AE08B184260F0B8E00BE1F05 /* viper_Interactor.swift in Sources */,
 				AE994122260BC9EE00E22DFE /* SelectorViewController.swift in Sources */,
 				AEA017BA260AD70000B4F6A2 /* NSTableView.swift in Sources */,
 				AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */,
@@ -479,13 +546,18 @@
 				AE9940FD260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
 				AEA017F3260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
 				AE9F08C7260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */,
+				AE08B176260F0B6500BE1F05 /* viper_Interfaces.swift in Sources */,
 				AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */,
 				AE29C41F260C11BA002B749E /* mvvmrx_Model.swift in Sources */,
 				AE29C418260C0DEB002B749E /* mvvmrx_ViewController.swift in Sources */,
 				AEA017E2260ADAA700B4F6A2 /* mvvmrs_ViewController.swift in Sources */,
 				AE29C429260C309D002B749E /* TodoModel.swift in Sources */,
+				AE08B195260F19C300BE1F05 /* Pattern.swift in Sources */,
 				AE29C411260C0DE1002B749E /* mvvmrx_ViewModel.swift in Sources */,
+				AE08B169260F0AF500BE1F05 /* viper_Entity.swift in Sources */,
 				AE29C3FD260BD48B002B749E /* SplitViewController.swift in Sources */,
+				AE08B17D260F0B7800BE1F05 /* viper_Router.swift in Sources */,
+				AE08B18B260F0B9800BE1F05 /* viper_Presenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
