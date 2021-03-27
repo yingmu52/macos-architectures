@@ -71,6 +71,7 @@ extension mvc_ViewController {
         default:
             break
         }
+        setWindowTitle()
     }
     
     func addTodo(item: String) {
