@@ -7,42 +7,52 @@
 
 import SwiftUI
 
+protocol swiftui_ViewModelType {
+    var inputs: swiftui_ViewModelInputs { get }
+    var outputs: swiftui_ViewModelOutputs { get }
+}
 protocol swiftui_ViewModelInputs {
-    var removingTodoItem: swiftui_Model? { get set }
-    var removingCompletedItem: swiftui_Model? { get set }
-    var newItem: String { get set }
+    func removeTodo(item: swiftui_Model)
+    func removeCompleted(item: swiftui_Model)
+    func addTodo(item: String)
 }
 
 protocol swiftui_ViewModelOutputs {
-    var todoItems: [swiftui_Model] { get set }
-    var completedItems: [swiftui_Model] { get set }
+    var todoItems: [swiftui_Model] { get }
+    var completedItems: [swiftui_Model] { get }
+    var draftingNewItem: String { get set }
 }
 
-class swiftui_ViewModel: ObservableObject, swiftui_ViewModelInputs, swiftui_ViewModelOutputs {
+class swiftui_ViewModel: ObservableObject, swiftui_ViewModelType, swiftui_ViewModelOutputs {
+    var inputs: swiftui_ViewModelInputs { self }
+    var outputs: swiftui_ViewModelOutputs { self }
 
     @Published var todoItems: [swiftui_Model] = []
     @Published var completedItems: [swiftui_Model] = []
-    @Published var newItem = String()
-    
-    @Published var removingTodoItem: swiftui_Model? {
-        didSet {
-            if let index = todoItems.firstIndex(where: { $0.id == removingTodoItem?.id }) {
-                let removed = todoItems.remove(at: index)
-                let newCompleted = swiftui_Model(type: .completed, content: removed.content)
-                completedItems.insert(newCompleted, at: 0)
-                saveTodoModels(todoItems)
-                saveCompletedModels(completedItems)
-            }
+    @Published var draftingNewItem = String()
+}
+
+extension swiftui_ViewModel: swiftui_ViewModelInputs {
+    func removeTodo(item: swiftui_Model) {
+        if let index = todoItems.firstIndex(where: { $0.id == item.id }) {
+            let removed = todoItems.remove(at: index)
+            let newCompleted = swiftui_Model(type: .completed, content: removed.content)
+            completedItems.insert(newCompleted, at: 0)
+            saveTodoModels(todoItems)
+            saveCompletedModels(completedItems)
         }
     }
     
-    @Published var removingCompletedItem: swiftui_Model? {
-        didSet {
-            if let index = completedItems.firstIndex(where: { $0.id == removingCompletedItem?.id }) {
-                completedItems.remove(at: index)
-                saveCompletedModels(completedItems)
-                return
-            }
+    func removeCompleted(item: swiftui_Model) {
+        if let index = completedItems.firstIndex(where: { $0.id == item.id }) {
+            completedItems.remove(at: index)
+            saveCompletedModels(completedItems)
+            return
         }
+    }
+    
+    func addTodo(item: String) {
+        todoItems.insert(.init(type: .todo, content: item), at: 0)
+        draftingNewItem.removeAll()
     }
 }

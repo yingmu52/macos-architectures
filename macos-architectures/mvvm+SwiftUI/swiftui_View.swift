@@ -10,6 +10,8 @@ import SwiftUI
 struct swiftui_View: View {
     @ObservedObject var viewModel = swiftui_ViewModel()
     
+    @State var currentEditingText = String()
+    
     static func loadViewWithCache(
         todoModels: [swiftui_Model] = getCachedTodoItems().mapTodoModels(),
         completedModels: [swiftui_Model] = getCachedCompletedItems().mapCompletedModels()
@@ -25,16 +27,16 @@ struct swiftui_View: View {
     var body: some View {
         return VStack {
             ScrollView {
-                ForEach(viewModel.todoItems) { value in
-                    swiftui_ItemCell(value: value).onTapGesture(count: 2) { [viewModel] in
-                        viewModel.removingTodoItem = value
+                ForEach(viewModel.outputs.todoItems) { item in
+                    swiftui_ItemCell(value: item).onTapGesture(count: 2) { [viewModel] in
+                        viewModel.inputs.removeTodo(item: item)
                     }
                 }
                 .background(Color.clear)
                 
-                ForEach(viewModel.completedItems) { value in
-                    swiftui_ItemCell(value: value).onTapGesture(count: 2) { [ viewModel] in
-                        viewModel.removingCompletedItem = value
+                ForEach(viewModel.outputs.completedItems) { item in
+                    swiftui_ItemCell(value: item).onTapGesture(count: 2) { [ viewModel] in
+                        viewModel.inputs.removeCompleted(item: item)
                     }
                 }
                 .background(Color.clear)
@@ -43,12 +45,9 @@ struct swiftui_View: View {
             .frame(maxWidth: .infinity)
             
             Divider()
-            TextField("Add new todo here", text: $viewModel.newItem, onCommit: {
-                let newItem = viewModel.newItem
-                if !newItem.isEmpty {
-                    viewModel.todoItems.insert(.init(type: .todo, content: newItem), at: 0)
-                    viewModel.newItem.removeAll()
-                }
+            TextField("Add new todo here", text: $currentEditingText, onCommit: {
+                viewModel.inputs.addTodo(item: currentEditingText)
+                currentEditingText.removeAll()
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding(.all, 8)
