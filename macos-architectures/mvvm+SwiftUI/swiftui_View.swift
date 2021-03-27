@@ -9,8 +9,8 @@ import SwiftUI
 
 struct swiftui_View: View {
     @ObservedObject var viewModel = swiftui_ViewModel()
-    
     @State var currentEditingText = String()
+    var onReceivedWindowTitle: ((String) -> Void) = { _ in }
     
     static func loadViewWithCache(
         todoModels: [swiftui_Model] = getCachedTodoItems().mapTodoModels(),
@@ -25,6 +25,8 @@ struct swiftui_View: View {
     }
     
     var body: some View {
+        onReceivedWindowTitle(viewModel.outputs.status)
+        
         return VStack {
             ScrollView {
                 ForEach(viewModel.outputs.todoItems) { item in
@@ -33,7 +35,7 @@ struct swiftui_View: View {
                     }
                 }
                 .background(Color.clear)
-                
+
                 ForEach(viewModel.outputs.completedItems) { item in
                     swiftui_ItemCell(value: item).onTapGesture(count: 2) { [ viewModel] in
                         viewModel.inputs.removeCompleted(item: item)
@@ -44,7 +46,6 @@ struct swiftui_View: View {
             .padding([.top, .leading, .trailing], 16)
             .frame(maxWidth: .infinity)
             
-            Divider()
             TextField("Add new todo here", text: $currentEditingText, onCommit: {
                 viewModel.inputs.addTodo(item: currentEditingText)
                 currentEditingText.removeAll()
@@ -71,6 +72,7 @@ struct swiftui_ItemCell: View {
         .background(backgroundColor)
         .foregroundColor(.white)
         .cornerRadius(5)
+        .animation(.easeInOut)
     }
     
     var shouldStrikeThrough: Bool {

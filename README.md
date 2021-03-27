@@ -11,3 +11,5 @@
 - https://freak4pc.medium.com/whats-new-in-rxswift-5-f7a5c8ee48e7
 - https://github.com/kickstarter/ios-oss
 - https://www.hackingwithswift.com/books/ios-swiftui/sharing-swiftui-state-with-observedobject
+- https://developer.apple.com/tutorials/swiftui
+- https://www.hackingwithswift.com/quick-start/swiftui/swiftui-tips-and-tricks

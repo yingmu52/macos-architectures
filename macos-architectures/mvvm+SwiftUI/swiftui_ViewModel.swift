@@ -21,15 +21,20 @@ protocol swiftui_ViewModelOutputs {
     var todoItems: [swiftui_Model] { get }
     var completedItems: [swiftui_Model] { get }
     var draftingNewItem: String { get set }
+    var status: String { get }
 }
 
 class swiftui_ViewModel: ObservableObject, swiftui_ViewModelType, swiftui_ViewModelOutputs {
+
     var inputs: swiftui_ViewModelInputs { self }
     var outputs: swiftui_ViewModelOutputs { self }
 
     @Published var todoItems: [swiftui_Model] = []
     @Published var completedItems: [swiftui_Model] = []
     @Published var draftingNewItem = String()
+    var status: String {
+        "[MVVM + SwiftUI] \(todoItems.count) todos \(completedItems.count) completed"
+    }
 }
 
 extension swiftui_ViewModel: swiftui_ViewModelInputs {
@@ -52,7 +57,9 @@ extension swiftui_ViewModel: swiftui_ViewModelInputs {
     }
     
     func addTodo(item: String) {
-        todoItems.insert(.init(type: .todo, content: item), at: 0)
-        draftingNewItem.removeAll()
+        if !item.isEmpty {
+            todoItems.insert(.init(type: .todo, content: item), at: 0)
+            draftingNewItem.removeAll()
+        }
     }
 }

@@ -19,7 +19,10 @@ class SplitViewController: NSSplitViewController {
                 self?.splitViewItems.removeLast()
                 
                 if pattern.storyboardName == "" {
-                    let view = swiftui_View.loadViewWithCache()
+                    var view = swiftui_View.loadViewWithCache()
+                    view.onReceivedWindowTitle = { [weak self] title in
+                        self?.view.window?.title = title
+                    }
                     let vc = NSHostingController(rootView: view)
                     self?.splitViewItems.append(NSSplitViewItem(viewController: vc))
                     return
