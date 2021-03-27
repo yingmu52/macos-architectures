@@ -49,6 +49,9 @@
 		AE994120260BC9EE00E22DFE /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99411F260BC9EE00E22DFE /* SelectorViewController.swift */; };
 		AE994121260BC9EE00E22DFE /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99411F260BC9EE00E22DFE /* SelectorViewController.swift */; };
 		AE994122260BC9EE00E22DFE /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE99411F260BC9EE00E22DFE /* SelectorViewController.swift */; };
+		AE9F08C5260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F08C4260EA307003D0B5C /* swiftui_ViewModel.swift */; };
+		AE9F08C6260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F08C4260EA307003D0B5C /* swiftui_ViewModel.swift */; };
+		AE9F08C7260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F08C4260EA307003D0B5C /* swiftui_ViewModel.swift */; };
 		AEA017AE260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
 		AEA017AF260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
 		AEA017B0260AD6DD00B4F6A2 /* NSTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */; };
@@ -113,6 +116,7 @@
 		AE8E81A5260D031C00B9F9F9 /* swiftui_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_View.swift; sourceTree = "<group>"; };
 		AE9940FA260BC47100E22DFE /* mvvmrs_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mvvmrs_Model.swift; sourceTree = "<group>"; };
 		AE99411F260BC9EE00E22DFE /* SelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
+		AE9F08C4260EA307003D0B5C /* swiftui_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_ViewModel.swift; sourceTree = "<group>"; };
 		AEA017AD260AD6DD00B4F6A2 /* NSTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableCellView.swift; sourceTree = "<group>"; };
 		AEA017B7260AD70000B4F6A2 /* NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
 		AEA017CE260AD8E200B4F6A2 /* mvc_View.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = mvc_View.storyboard; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			children = (
 				AE8E81A5260D031C00B9F9F9 /* swiftui_View.swift */,
 				AE2572FB260DA039000CC099 /* swiftui_Model.swift */,
+				AE9F08C4260EA307003D0B5C /* swiftui_ViewModel.swift */,
 			);
 			path = "mvvm+SwiftUI";
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				AE29C3FB260BD48B002B749E /* SplitViewController.swift in Sources */,
 				AE2572FC260DA039000CC099 /* swiftui_Model.swift in Sources */,
 				AE1D295B2609276A00654794 /* mvc_ViewController.swift in Sources */,
+				AE9F08C5260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */,
 				AE29C427260C309D002B749E /* TodoModel.swift in Sources */,
 				AE29C416260C0DEB002B749E /* mvvmrx_ViewController.swift in Sources */,
 				AE1D29592609276A00654794 /* AppDelegate.swift in Sources */,
@@ -449,6 +455,7 @@
 				AE29C435260C5022002B749E /* DataSource.swift in Sources */,
 				AE9940FC260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
 				AEA017F2260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
+				AE9F08C6260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */,
 				AE1D296C2609276D00654794 /* macos_architecturesTests.swift in Sources */,
 				AE29C41E260C11BA002B749E /* mvvmrx_Model.swift in Sources */,
 				AE29C417260C0DEB002B749E /* mvvmrx_ViewController.swift in Sources */,
@@ -471,6 +478,7 @@
 				AE29C436260C5022002B749E /* DataSource.swift in Sources */,
 				AE9940FD260BC47100E22DFE /* mvvmrs_Model.swift in Sources */,
 				AEA017F3260ADBBF00B4F6A2 /* mvvmrs_ViewModel.swift in Sources */,
+				AE9F08C7260EA307003D0B5C /* swiftui_ViewModel.swift in Sources */,
 				AE1D29772609276D00654794 /* macos_architecturesUITests.swift in Sources */,
 				AE29C41F260C11BA002B749E /* mvvmrx_Model.swift in Sources */,
 				AE29C418260C0DEB002B749E /* mvvmrx_ViewController.swift in Sources */,
