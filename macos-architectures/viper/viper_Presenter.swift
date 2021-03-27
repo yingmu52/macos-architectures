@@ -8,7 +8,6 @@
 import Foundation
 
 final class viper_Presenter: viper_PresenterInterface {
-
     var view: viper_ViewInterface
     var router: viper_RouterInterface
     
@@ -19,6 +18,18 @@ final class viper_Presenter: viper_PresenterInterface {
     
     func reloadTable() {
         view.reloadTable()
+        view.clearTextField()
+        view.setWindowTitle()
+    }
+    
+    func insertNewItem(at index: Int) {
+        view.insertNewItem(at: index)
+        view.clearTextField()
+        view.setWindowTitle()
+    }
+    
+    func delteItem(at index: Int) {
+        view.delteItem(at: index)
         view.clearTextField()
         view.setWindowTitle()
     }

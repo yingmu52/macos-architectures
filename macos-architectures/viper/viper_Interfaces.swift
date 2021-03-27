@@ -18,6 +18,8 @@ protocol viper_ViewInterface: SplitViewControllerSelectionProtocol {
     var interactor: viper_InteractorInterface? { get }
     static func configureVIPER(storyboardName: String) -> Self // return Self for better testability
     func reloadTable()
+    func insertNewItem(at index: Int)
+    func delteItem(at index: Int)
     func clearTextField()
 }
 
@@ -32,6 +34,8 @@ protocol viper_InteractorInterface {
 protocol viper_PresenterInterface {
     var view: viper_ViewInterface { get }
     var router: viper_RouterInterface { get }
+    func insertNewItem(at index: Int)
+    func delteItem(at index: Int)
     func reloadTable()
 }
 

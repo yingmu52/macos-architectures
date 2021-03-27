@@ -36,6 +36,14 @@ final class viper_ViewController: NSViewController {
 }
 
 extension viper_ViewController: viper_ViewInterface {
+    func insertNewItem(at index: Int) {
+        tableView.insertRows(at: [index], withAnimation: .slideDown)
+    }
+    
+    func delteItem(at index: Int) {
+        tableView.removeRows(at: [index], withAnimation: .slideRight)
+    }
+    
     func reloadTable() {
         tableView.reloadData()
     }
