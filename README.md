@@ -13,3 +13,5 @@
 - https://www.hackingwithswift.com/books/ios-swiftui/sharing-swiftui-state-with-observedobject
 - https://developer.apple.com/tutorials/swiftui
 - https://www.hackingwithswift.com/quick-start/swiftui/swiftui-tips-and-tricks
+- https://flutter.dev/docs/development/add-to-app/ios/project-setup
+- https://flutter.dev/desktop
