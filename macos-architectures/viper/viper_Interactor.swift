@@ -29,6 +29,7 @@ final class viper_Interactor: viper_InteractorInterface {
         if !item.isEmpty {
             dataSource.insert(.init(type: .todo, content: item), at: 0)
             presenter.insertNewItem(at: 0)
+            saveTodoItems(getCachedTodoItems() + [item])
         }
     }
     
@@ -44,9 +45,16 @@ final class viper_Interactor: viper_InteractorInterface {
             presenter.delteItem(at: index)
             presenter.insertNewItem(at: todos.count)
 
+            saveTodoItems(todos.map { $0.content })
+            saveCompletedItems(([newComplete] + completes).map { $0.content })
         case .completed:
             dataSource.remove(at: index)
             presenter.delteItem(at: index)
+            
+            let completedItems = dataSource.values
+                .filter { $0.type == .completed }
+                .map { $0.content }
+            saveCompletedItems(completedItems)
         }
     }
 }

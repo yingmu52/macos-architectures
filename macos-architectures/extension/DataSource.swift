@@ -75,21 +75,4 @@ extension DataSource {
     func insert(_ value: Value, at index: Int) {
         values.insert(value, at: 0)
     }
-    
-    func getType(at index: Int) -> TodoType {
-        values[index].type
-    }
-    
-}
-
-extension DataSource {
-    static func createFromCache<T: TodoModel>() -> DataSource<T> {
-        let models =
-            getCachedTodoItems().mapTodoModels() as [T] +
-            getCachedCompletedItems().mapCompletedModels() as [T]
-        
-        let dataSource = DataSource<T>([])
-        dataSource.setValues(models)
-        return dataSource
-    }
 }
