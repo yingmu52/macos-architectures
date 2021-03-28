@@ -3,7 +3,7 @@ import 'package:todo_app_flutter/model.dart';
 
 class ViewModel {
   List<String> _todoItems = [];
-  List<String> _completedItems = ["4", "5", "6"];
+  List<String> _completedItems = [];
 
   ViewModel();
 
@@ -21,7 +21,9 @@ class ViewModel {
   }
 
   void addTodo(String item) {
-    _todoItems.add(item);
+    if (item.isNotEmpty) {
+      _todoItems.add(item);
+    }
   }
 
   void clickOn(int index) {

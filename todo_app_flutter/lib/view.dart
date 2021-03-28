@@ -41,9 +41,11 @@ class _TodoListViewState extends State<TodoListView> {
             child: Text(
               item.content,
               style: TextStyle(
+                decoration: item.type == TodoType.todo ? TextDecoration.none :TextDecoration.lineThrough,
                 color: Colors.white,
               ),
               maxLines: 2,
+
             ),
           ),
           margin: EdgeInsets.all(item.type == TodoType.todo ? 12 : 10),
