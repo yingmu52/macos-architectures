@@ -11,8 +11,6 @@ class ViewModel {
     final pref = await _pref;
     _todoItems = pref.getStringList('TodoItems');
     _completedItems = pref.getStringList('CompletedItems');
-    print(_todoItems);
-    print(_completedItems);
   }
 
   List<Model> get items {
