@@ -12,7 +12,7 @@ final class viper_ViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var inputTextField: NSTextField!
     
-    var interactor: viper_InteractorInterface?
+    var presenter: viper_PresenterInterface?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,8 @@ final class viper_ViewController: NSViewController {
         inputTextField.delegate = self
         inputTextField.placeholderString = "Add new todo here"
         
-        interactor?.dataSource.bind(to: tableView)
-        interactor?.loadData()
+        presenter?.bindDataSource(to: tableView)
+        presenter?.loadData()
     }
     
     override func viewDidAppear() {
@@ -31,11 +31,12 @@ final class viper_ViewController: NSViewController {
     }
     
     @objc func doubleClick() {
-        interactor?.doubleClick(at: tableView.clickedRow)
+        presenter?.doubleClick(at: tableView.clickedRow)
     }
 }
 
 extension viper_ViewController: viper_ViewInterface {
+
     func insertNewItem(at index: Int) {
         tableView.insertRows(at: [index], withAnimation: .slideDown)
     }
@@ -57,28 +58,31 @@ extension viper_ViewController: viper_ViewInterface {
         let vc = storyboard.instantiateInitialController() as! viper_ViewController
 
         let router = viper_Router()
-        let presenter = viper_Presenter(view: vc, router: router)
-
+        var presenter = viper_Presenter(view: vc, router: router)
+        
         let dataSource = DataSource<viper_Entity>([])
         let interactor = viper_Interactor(presenter: presenter, dataSource: dataSource)
+        presenter.interactor = interactor
         
-        vc.interactor = interactor
-
+        vc.presenter = presenter
         return vc
+    }
+    
+    func updateWindow(title: String) {
+        view.window?.title = title
     }
 }
 
 extension viper_ViewController: SplitViewControllerSelectionProtocol {
     func setWindowTitle() {
-        guard let interactor = self.interactor else { return }
-        view.window?.title = "[VIPER] \(interactor.dataSource.status)"
+        presenter?.setWindowTitle()
     }
 }
 
 extension viper_ViewController: NSTextFieldDelegate {
     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         guard commandSelector == #selector(NSResponder.insertNewline) else { return false }
-        interactor?.addTodo(item: inputTextField.stringValue)
+        presenter?.addTodo(item: inputTextField.stringValue)
         return true
     }
 }

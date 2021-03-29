@@ -8,19 +8,13 @@
 import Foundation
 import Cocoa
 
-/*
- this is a variant of the standard VIPER concept
- in which V -> I -> P ( -> R, -> V)
- I like this directional way because it avoids using weak reference
- */
-
-protocol viper_ViewInterface: SplitViewControllerSelectionProtocol {
-    var interactor: viper_InteractorInterface? { get }
+protocol viper_ViewInterface: NSViewController {
     static func configureVIPER(storyboardName: String) -> Self // return Self for better testability
     func reloadTable()
     func insertNewItem(at index: Int)
     func delteItem(at index: Int)
     func clearTextField()
+    func updateWindow(title: String)
 }
 
 protocol viper_InteractorInterface {
@@ -34,9 +28,17 @@ protocol viper_InteractorInterface {
 protocol viper_PresenterInterface {
     var view: viper_ViewInterface { get }
     var router: viper_RouterInterface { get }
+    var interactor: viper_InteractorInterface? { get set }
+
+    func bindDataSource(to tableView: NSTableView)
+    func loadData()
+    func doubleClick(at index: Int)
+    
     func insertNewItem(at index: Int)
     func delteItem(at index: Int)
     func reloadTable()
+    func setWindowTitle()
+    func addTodo(item: String)
 }
 
 protocol viper_EntityInterface: TodoModel {}
