@@ -11,7 +11,6 @@ class TodoListView extends StatefulWidget {
 }
 
 class _TodoListViewState extends State<TodoListView> {
-
   var _textEditingController = TextEditingController();
   var _textFocusMode = FocusNode();
 
@@ -36,26 +35,36 @@ class _TodoListViewState extends State<TodoListView> {
         ),
         margin: EdgeInsets.only(top: 8, left: 8, right: 8),
         child: Container(
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              item.content,
-              style: TextStyle(
-                decoration: item.type == TodoType.todo ? TextDecoration.none :TextDecoration.lineThrough,
+          child: Row(
+            children: [
+              Icon(
+                item.type == TodoType.todo ? Icons.radio_button_unchecked: Icons.check_circle,
                 color: Colors.white,
+                size: 24.0,
+                semanticLabel: 'Text to announce in accessibility modes',
+             ),
+              Container(
+                padding: EdgeInsets.only(left: 8),
+                child: Text(
+                  item.content,
+                  style: TextStyle(
+                    decoration: item.type == TodoType.todo
+                        ? TextDecoration.none
+                        : TextDecoration.lineThrough,
+                    color: Colors.white,
+                  ),
+                  maxLines: 1,
+                ),
               ),
-              maxLines: 2,
-
-            ),
+            ],
           ),
-          margin: EdgeInsets.all(item.type == TodoType.todo ? 12 : 10),
+          margin: EdgeInsets.all(10),
+          height: item.type == TodoType.todo ? 40 : 35,
         ),
       );
       var gesture = GestureDetector(
         child: container,
-        onDoubleTap: () => {
-          setState(() => widget.viewModel.clickOn(i))
-        },
+        onDoubleTap: () => {setState(() => widget.viewModel.clickOn(i))},
       );
       list.add(gesture);
     }
@@ -64,7 +73,7 @@ class _TodoListViewState extends State<TodoListView> {
 
   Container get inputTextView {
     return Container(
-      color: Colors.grey,
+      color: Colors.white,
       padding: EdgeInsets.all(8),
       height: 60,
       child: Container(
@@ -80,7 +89,8 @@ class _TodoListViewState extends State<TodoListView> {
             focusNode: _textFocusMode,
             autofocus: true,
             controller: _textEditingController,
-            textInputAction: TextInputAction.newline, // detect enter
+            textInputAction: TextInputAction.newline,
+            // detect enter
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Add new todo here',
