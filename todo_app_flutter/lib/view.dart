@@ -15,6 +15,14 @@ class _TodoListViewState extends State<TodoListView> {
   var _textFocusMode = FocusNode();
 
   @override
+  void didUpdateWidget(covariant TodoListView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    widget.viewModel.loadData().then((value) {
+      setState(() {});
+    });
+  }
+
+  @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
     _textEditingController.dispose();
@@ -38,11 +46,13 @@ class _TodoListViewState extends State<TodoListView> {
           child: Row(
             children: [
               Icon(
-                item.type == TodoType.todo ? Icons.radio_button_unchecked: Icons.check_circle,
+                item.type == TodoType.todo
+                    ? Icons.radio_button_unchecked
+                    : Icons.check_circle,
                 color: Colors.white,
                 size: 24.0,
                 semanticLabel: 'Text to announce in accessibility modes',
-             ),
+              ),
               Container(
                 padding: EdgeInsets.only(left: 8),
                 child: Text(
@@ -64,7 +74,9 @@ class _TodoListViewState extends State<TodoListView> {
       );
       var gesture = GestureDetector(
         child: container,
-        onDoubleTap: () => {setState(() => widget.viewModel.clickOn(i))},
+        onDoubleTap: () => {
+          widget.viewModel.clickOn(i).then((value) => {setState(() => {})})
+        },
       );
       list.add(gesture);
     }
@@ -97,7 +109,9 @@ class _TodoListViewState extends State<TodoListView> {
             ),
             onSubmitted: (text) {
               setState(() {
-                widget.viewModel.addTodo(_textEditingController.text);
+                widget.viewModel
+                    .addTodo(_textEditingController.text)
+                    .then((value) {});
               });
               _textEditingController.text = ""; // clear text field
               _textFocusMode.requestFocus(); // refocus textfield after onSubmit

@@ -1,15 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:localstorage/localstorage.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app_flutter/model.dart';
 
 class ViewModel {
   List<String> _todoItems = [];
   List<String> _completedItems = [];
-  final LocalStorage storage = LocalStorage('todo storage');
+  final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
 
-  ViewModel() {
-    _todoItems = storage.getItem('TodoItems') ?? [];
-    _completedItems = storage.getItem('CompletedItems') ?? [];
+  Future loadData() async {
+    final pref = await _pref;
+    _todoItems = pref.getStringList('TodoItems');
+    _completedItems = pref.getStringList('CompletedItems');
+    print(_todoItems);
+    print(_completedItems);
   }
 
   List<Model> get items {
@@ -31,28 +34,36 @@ class ViewModel {
       count += _completedItems.length;
     }
     return count;
-    return (_todoItems.length) + (_completedItems.length ?? 0);
   }
 
-  void addTodo(String item) {
+  Future addTodo(String item) async {
     if (item.isNotEmpty) {
       _todoItems.add(item);
-      storage.setItem("todoItems", _todoItems);
+
+      var pref = await _pref;
+      pref.setStringList('TodoItems', _todoItems);
     }
   }
 
-  void clickOn(int index) {
+  Future clickOn(int index) async {
     var item = items[index];
+
+    var pref = await _pref;
+
     switch (item.type) {
       case TodoType.todo:
         var removedTodo = _todoItems.removeAt(index);
         _completedItems.insert(0, removedTodo);
-        storage.setItem("TodoItems", _todoItems);
-        storage.setItem("CompletedItems", _completedItems);
+
+        await Future.wait([
+          pref.setStringList('TodoItems', _todoItems),
+          pref.setStringList('CompletedItems', _completedItems),
+        ]);
         break;
+
       case TodoType.completed:
         _completedItems.removeAt(index - _todoItems.length);
-        storage.setItem("CompletedItems", _completedItems);
+        await pref.setStringList('CompletedItems', _completedItems);
         break;
     }
   }
